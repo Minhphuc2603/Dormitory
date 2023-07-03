@@ -9,17 +9,17 @@ export default function Home() {
     return (
         <TemplateHome>
           
-            <div class="container mp">
-                <div class="row">
-                    <div class="col-sm list1">
+            <div className="container mp">
+                <div className="row">
+                    <div className="col-sm list1">
                         <h4>Thông tin KTX Đại Học FPT</h4>
                         <h6>Thông tin</h6>
                     </div>
-                    <div class="col-sm list1">
+                    <div className="col-sm list1">
                         <h4>Đăng kí sử dụng KTX</h4>
                         <h6>Đăng kí</h6>
                     </div>
-                    <div class="col-sm list1">
+                    <div className="col-sm list1">
                         <h4>Các câu hỏi thường gặp</h4>
                         <h6>FAQ</h6>
                     </div>

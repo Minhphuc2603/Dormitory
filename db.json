@@ -1,63 +1,76 @@
 {
   "user": [
     {
-      "id": "user",
+      "id": "1",
       "name": "Van Tung",
-      "password": "ntuser",
-      "email": "email@email.com",
+      "email": "tungne@gmail.com",
       "phone": "56778889989",
       "address": "HCM",
-      "role": "user",
       "gender": "male"
     },
     {
-      "name": "Trinh Minh Phuc",
+      "id": "2",
+      "name": "trinh minh phuc",
       "email": "trinhphuc@gmail.com",
       "phone": "0946488236",
       "address": "Ha Noi",
-      "gender": "female",
-      "password": "123",
-      "id": "phuctm"
+      "gender": "female"
     },
     {
-      "id": "tunghi",
+      "id": "3",
       "name": "Tran Van Tung",
-      "password": "123",
       "email": "tunghi@gmail.com",
       "phone": "0974623723",
-      "address": "HCM",
-      "gender": "male",
-      "": "0974623725"
+      "address": "Ha Noi",
+      "gender": "male"
+    },
+    {
+      "id": 4,
+      "name": "Nguyen Luong DUy",
+      "email": "phuctm@gmail.com",
+      "phone": "120210209912",
+      "address": "Ha Noi",
+      "gender": "female"
+    },
+    {
+      "id": 5,
+      "name": "Le Minh Cuong",
+      "email": "cuonglm@gmail.com",
+      "phone": "0983717221",
+      "address": "Ha Noi",
+      "gender": "male"
     }
   ],
-  "roleaccess": [
+  "account": [
     {
-      "role": "admin",
-      "menu": "customer",
-      "haveadd": true,
-      "haveedit": true,
-      "havedelete": true
+      "id": "1",
+      "username": "tungne",
+      "password": "123",
+      "role": "student"
     },
     {
-      "role": "admin",
-      "menu": "supplier",
-      "haveadd": true,
-      "haveedit": true,
-      "havedelete": true
+      "id": "2",
+      "username": "phuctm",
+      "password": "123",
+      "role": "admin"
     },
     {
-      "role": "user",
-      "menu": "customer",
-      "haveadd": false,
-      "haveedit": false,
-      "havedelete": false
+      "id": "3",
+      "username": "tunglv",
+      "password": "123",
+      "role": "user"
     },
     {
-      "role": "user1",
-      "menu": "customer",
-      "haveadd": false,
-      "haveedit": false,
-      "havedelete": false
+      "id": 4,
+      "username": "duynl",
+      "password": "123",
+      "role": "student"
+    },
+    {
+      "id": 5,
+      "username": "cuonglm",
+      "password": "123",
+      "role": "student"
     }
   ]
 }

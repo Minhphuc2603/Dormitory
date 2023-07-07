@@ -10,7 +10,7 @@ const Login = () => {
     const usenavigate = useNavigate();
 
     useEffect(()=>{
-        const id =sessionStorage.getItem('username')
+        const id =sessionStorage.getItem('id')
         if(id){
             usenavigate("/")
         }
@@ -19,30 +19,36 @@ const Login = () => {
     const ProceedLogin = (e) => {
         e.preventDefault();
         if (validate()) {
-
-            fetch('http://localhost:9999/user/' + username)
-                .then((res) => {
-                    return res.json();
-                }).then((resp) => {
-                    if (Object.keys(resp).length === 0) {
-                        toast.error('Please Enter valid username');
-                    } else {
-                        if (resp.password === password) {
-
-                            sessionStorage.setItem('username', username);
-                            sessionStorage.setItem('userrole', resp.role);
-
-                            usenavigate('/')
-                            toast.success('Success');
-                        } else {
-                            toast.error('Please Enter valid credentials');
-                        }
-                    }
-                }).catch((err) => {
-                    toast.error('Login Failed due to :' + err.message);
-                });
+          fetch('http://localhost:9999/account')
+            .then((res) => {
+              if (res.ok) {
+                return res.json();
+              } else {
+                throw new Error('Failed to fetch user data');
+              }
+            })
+            .then((data) => {
+              const foundUser = data.find(
+                (user) => user.username === username && user.password === password
+              );
+              if (foundUser) {
+                console.log('id:', foundUser.id);
+                console.log('Role:', foundUser.role);
+                sessionStorage.setItem('id', foundUser.id);
+                sessionStorage.setItem('userrole', foundUser.role);
+                usenavigate('/');
+                toast.success('Success');
+                
+              } else {
+                toast.error('Please enter valid credentials');
+              }
+            })
+            .catch((err) => {
+              toast.error('Failed to fetch user data: ' + err.message);
+            });
         }
-    }
+      };
+      
 
 
     const validate = () => {

@@ -6,7 +6,7 @@ import Login from './screens/Login';
 import { ToastContainer } from 'react-toastify';
 import Register from './screens/Register';
 import EditUser from './screens/EditUser';
-import ManagerUser from './screens/ManagerUser';
+// import ManagerUser from './screens/ManagerUser';
 
 
 
@@ -21,7 +21,7 @@ function App() {
      <Route path='/login' element={<Login/>}/> 
      <Route path='/register' element={<Register/>}/> 
      <Route path='/user/edit' element={<EditUser/>}/>
-     <Route path='/manageruser' element={<ManagerUser/>}/> 
+     {/* <Route path='/manageruser' element={<ManagerUser/>}/>  */}
 
      </Routes>   
     </BrowserRouter>

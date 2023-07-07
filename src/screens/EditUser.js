@@ -8,7 +8,7 @@ const EditUser = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState({
         id: "",
-        password:"123",
+        password:"",
         name: "",
         phone: "",
         email: "",
@@ -36,7 +36,7 @@ const EditUser = () => {
         fetch(`http://localhost:9999/user/${id}`, {
             method: "PUT",
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, phone, address, gender ,password :"123"})
+            body: JSON.stringify({ name, email, phone, address, gender ,password })
         }).then((res) => {
             toast.success('edit success.');
             navigate('/user');

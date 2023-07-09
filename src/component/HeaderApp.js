@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 
 function HeaderApp() {
   const id = sessionStorage.getItem('id')
+  const role = sessionStorage.getItem('userrole')
+  
   const navigate = useNavigate();
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to Logout")) {
@@ -19,6 +21,7 @@ function HeaderApp() {
   }
   
     const [users, setUsers] = useState([])
+   
     useEffect(() => {
     fetch('http://localhost:9999/user/'+id)
         .then(resp => resp.json())
@@ -29,6 +32,8 @@ function HeaderApp() {
             console.log(err.message);
         })
 }, []);
+
+
   return (
     <div className="header">
       <img src="https://ocd.fpt.edu.vn/Content/images/landing/logo.png" />
@@ -44,8 +49,12 @@ function HeaderApp() {
           <Link to="/" className="font">Home</Link>
           <Link to="/about" className="font">About</Link>
           {id ? (
-            <>
-            <Link to={`/user/${id}`} className="font">Manager Profile</Link>
+            <>{role ==="admin"?(
+              <Link to={`manageruser`} className="font">Manager Page</Link>
+            ):
+            <Link to={`/user/${id}`} className="font">Profile</Link>
+            }
+            
             <Link onClick={() => handleLogout()} className="font">Logout</Link>
             
             </>
@@ -53,7 +62,6 @@ function HeaderApp() {
             
             : <Link to="/login" className="font">Login</Link>
           }
-
 
 
         </ul>

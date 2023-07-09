@@ -1,14 +1,19 @@
 
-import { Button, Col, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+
+import { Link, useParams } from "react-router-dom";
 import TemplateUser from "../template/TemplateUser";
+import TemplateAdmin from "../template/TemplateAdmin";
+
 
 import { useState, useEffect } from "react";
 
 
 export default function ProfileUser() {
     const [users, setUsers] = useState([]);
-    const id = sessionStorage.getItem('username')
+    const [account, setAccount] = useState([])
+    const role = sessionStorage.getItem('userrole')
+
+    const { id } = useParams()
     useEffect(() => {
         fetch("http://localhost:9999/user/" + id)
             .then((resp) => resp.json())
@@ -19,70 +24,236 @@ export default function ProfileUser() {
                 console.log(err.message);
             });
     }, []);
+    useEffect(() => {
+        fetch('http://localhost:9999/account/' + id)
+            .then(resp => resp.json())
+            .then(data => {
+                setAccount(data);
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    }, []);
     return (
-        <>
+        <>{role === "admin" ? (
+            <TemplateAdmin>
+                <div className="container">
+                    <div className="main-body">
+                        {/* Breadcrumb */}
+
+                        {/* /Breadcrumb */}
+                        <div className="row gutters-sm">
+                            <div className="col-md-4 mb-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="d-flex flex-column align-items-center text-center">
+                                            <img
+                                                src={users.avatar}
+                                                alt="Load"
+                                                className="rounded-circle"
+                                                width={150}
+
+                                            />
+                                            <div className="mt-3">
+                                                <h4>{account.username}</h4>
+                                                <p className="text-secondary mb-1">FPT University</p>
+                                                <p className="text-muted font-size-sm">
+                                                    {users.address}
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="col-md-8">
+                                <div className="card mb-3">
+                                    <div className="card-body">
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Full Name</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">{users.name}</div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Email</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">{users.email}</div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Phone</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">{users.phone}</div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Gender</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">{
+                                                users.gender ? (
+                                                    <span style={{ color: "blue" }}>
+                                                        Male
+                                                    </span>
+                                                ) : (
+                                                    <span style={{ color: "red" }}>
+                                                        FeMale
+                                                    </span>
+                                                )
+                                            }</div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Address</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">
+                                                {users.address}
+                                            </div>
+                                        </div>
+
+                                        <hr />
+
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <Link
+                                                    className="btn btn-info "
+                                                    // target="__blank"
+                                                    to={`/user/edit/${id}`}
+                                                >
+                                                    Edit
+                                                </Link>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </TemplateAdmin>
+        ):(
             <TemplateUser>
+                <div className="container">
+                    <div className="main-body">
+                        {/* Breadcrumb */}
 
-                <Row className="profile-user">
-                    <Col className="offset-md-2 col-md-8" style={{ border: "1px solid red" }}>
-                        <Row className="profile-title">
-                            <Col style={{ textAlign: "center", padding: "50px" }}>
-                                <h3>Profile </h3>
+                        {/* /Breadcrumb */}
+                        <div className="row gutters-sm">
+                            <div className="col-md-4 mb-3">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="d-flex flex-column align-items-center text-center">
+                                            <img
+                                                src={users.avatar}
+                                                alt="Load"
+                                                className="rounded-circle"
+                                                width={150}
+
+                                            />
+                                            <div className="mt-3">
+                                                <h4>{account.username}</h4>
+                                                <p className="text-secondary mb-1">FPT University</p>
+                                                <p className="text-muted font-size-sm">
+                                                    {users.address}
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="col-md-8">
+                                <div className="card mb-3">
+                                    <div className="card-body">
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Full Name</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">{users.name}</div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Email</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">{users.email}</div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Phone</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">{users.phone}</div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Gender</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">{
+                                                users.gender ? (
+                                                    <span style={{ color: "blue" }}>
+                                                        Male
+                                                    </span>
+                                                ) : (
+                                                    <span style={{ color: "red" }}>
+                                                        FeMale
+                                                    </span>
+                                                )
+                                            }</div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Address</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">
+                                                {users.address}
+                                            </div>
+                                        </div>
+
+                                        <hr />
+
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <Link
+                                                    className="btn btn-info "
+                                                    // target="__blank"
+                                                    to={`/user/edit/${id}`}
+                                                >
+                                                    Edit
+                                                </Link>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
 
 
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col md={12}>
-                                <Form>
-                                    <Row style={{ marginBottom: "30px" }}>
-                                        <Form.Group className="col-md-6">
-                                            <Form.Text>Id</Form.Text>
-                                            <Form.Control defaultValue={users.id || ""} disabled />
-                                        </Form.Group>
-                                        <Form.Group className="col-md-6">
-                                            <Form.Text>
-                                                FullName
-                                            </Form.Text>
-                                            <Form.Control defaultValue={users.name || ""} disabled />
-                                            <Form.Text>
 
-                                            </Form.Text>
-                                        </Form.Group>
-                                    </Row>
-                                    <Row style={{ marginBottom: "30px" }}>
-                                        <Form.Group className="col-md-6">
-                                            <Form.Text>Phone</Form.Text>
-                                            <Form.Control type="number" defaultValue={users.phone || ""} disabled />
-                                            {/*mac dinh la text*/}
-                                        </Form.Group>
-                                        <Form.Group className="col-md-6">
-                                            <Form.Text>City</Form.Text>
-                                            <Form.Control defaultValue={users.address || ""} disabled />
-                                        </Form.Group>
-                                    </Row>
-                                    <Row style={{ marginBottom: "30px" }}>
-                                        <Form.Group className="col-md-6">
-                                            <Form.Text>Email</Form.Text>
-                                            <Form.Control defaultValue={users.email || ""} disabled />
-
-                                        </Form.Group>
-                                        <Form.Group className="col-md-6">
-                                            <Form.Text>Gender</Form.Text>
-                                            <Form.Control defaultValue={users.gender || ""} disabled />
-                                        </Form.Group>
-                                    </Row>
-                                    <Row style={{ marginBottom: "30px" }}>
-                                    <Link to={"/user/edit"} className="btn btn-danger">
-                                       Edit
-                                    </Link>
-                                    </Row>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </TemplateUser>
+        )           
+        }           
         </>
     );
 }

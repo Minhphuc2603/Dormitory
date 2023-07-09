@@ -1,111 +1,173 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import TemplateUser from "../template/TemplateUser";
 import { toast } from "react-toastify";
 
 const EditUser = () => {
     const navigate = useNavigate();
-    const [users, setUsers] = useState({
-        id: "",
-        password:"",
+    const { id } = useParams();
+
+    const [user, setUser] = useState({
         name: "",
-        phone: "",
         email: "",
+        phone: "",
         address: "",
         gender: ""
     });
-    const id = sessionStorage.getItem('username');
+
+    const handleInputChange = (event) => {
+        setUser({ ...user, [event.target.name]: event.target.value });
+    };
+
+    const handleSave = (e) => {
+        e.preventDefault();
+        if (window.confirm("Are you sure you want to edit?")) {
+            fetch(`http://localhost:9999/user/${id}`, {
+                method: "PUT",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user)
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    toast.success('Edit successful.');
+                    navigate(`/user/${id}`);
+                })
+                .catch((err) => {
+                    toast.error('Failed to edit: ' + err.message);
+                });
+        }
+    };
 
     useEffect(() => {
-        fetch("http://localhost:9999/user/" + id)
+        fetch(`http://localhost:9999/user/${id}`)
             .then((resp) => resp.json())
             .then((data) => {
-                setUsers(data);
+                setUser(data);
             })
             .catch((err) => {
                 console.log(err.message);
             });
-    }, []);
-
-    const handelSubmit = (e) => {
-        e.preventDefault();
-        const { id, name,password, email, phone, address, gender } = users;
-        if (window.confirm("Are you sure you want to Edit")) {
-
-        fetch(`http://localhost:9999/user/${id}`, {
-            method: "PUT",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, phone, address, gender ,password })
-        }).then((res) => {
-            toast.success('edit success.');
-            navigate('/user');
-        }).catch((err) => {
-            toast.error('Thất bại: ' + err.message);
-        });
-    }
-    };
-
-    const onInputChange = (e) => {
-        setUsers({ ...users, [e.target.name]: e.target.value });
-    };
+    }, [id]);
 
     return (
         <TemplateUser>
-            <Row className="profile-user">
-                <Col className="offset-md-2 col-md-8" style={{ border: "1px solid red" }}>
-                    <Row className="profile-title">
-                        <Col style={{ textAlign: "center", padding: "50px" }}>
-                            <h3>Profile</h3>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={12}>
-                            <Form onSubmit={handelSubmit}>
-                                <Row style={{ marginBottom: "30px" }}>
-                                    <Form.Group className="col-md-6">
-                                        <Form.Label>ID</Form.Label>
-                                        <Form.Control value={users.id} disabled />
-                                    </Form.Group>
-                                    <Form.Group className="col-md-6">
-                                        <Form.Label>FullName</Form.Label>
-                                        <Form.Control name="name" value={users.name} onChange={onInputChange} />
-                                    </Form.Group>
-                                </Row>
-                                <Row style={{ marginBottom: "30px" }}>
-                                    <Form.Group className="col-md-6">
-                                        <Form.Label>Phone</Form.Label>
-                                        <Form.Control type="number" name="phone" value={users.phone} onChange={onInputChange} />
-                                    </Form.Group>
-                                    <Form.Group className="col-md-6">
-                                        <Form.Label>City</Form.Label>
-                                        <Form.Control name="address" value={users.address} onChange={onInputChange} />
-                                    </Form.Group>
-                                </Row>
-                                <Row style={{ marginBottom: "30px" }}>
-                                    <Form.Group className="col-md-6">
-                                        <Form.Label>Email</Form.Label>
-                                        <Form.Control type="email" name="email" value={users.email} onChange={onInputChange} />
-                                    </Form.Group>
-                                    <Form.Group className="col-md-6">
-                                        <Form.Label>Gender</Form.Label>
-                                        <Form.Control name="gender" value={users.gender} onChange={onInputChange} />
-                                    </Form.Group>
-                                </Row>
-                                <Row style={{ marginBottom: "30px" }}>
-                                    <Button className="btn btn-primary" type="submit">
-                                        Edit
-                                    </Button>
-                                    <div class="divider" />
-                                    <Link to={"/user"} className="btn btn-outline-danger">
-                                        Cancel
-                                    </Link>
-                                </Row>
-                            </Form>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
+            <div className="container">
+                <div className="main-body">
+                    <div className="row gutters-sm">
+                        <div className="col-md-4 mb-3">
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="d-flex flex-column align-items-center text-center">
+                                        {/* Display user details */}
+                                        {/* <img
+                      src={mentor.avatar}
+                      alt="Admin"
+                      className="rounded-circle"
+                      width={150}
+                    /> */}
+                                        <div className="mt-3">
+                                            <h4>{user.username}</h4>
+                                            <p className="text-secondary mb-1">Full Stack Developer</p>
+                                            <p className="text-muted font-size-sm">{user.address}</p>
+                                            <button className="btn btn-primary">Follow</button>
+                                            <button className="btn btn-outline-primary">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-8">
+                            <div className="card mb-3">
+                                <div className="card-body">
+                                    <form onSubmit={handleSave}>
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Full Name</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">
+                                                <input
+                                                    type="text"
+                                                    name="name"
+                                                    value={user.name}
+                                                    onChange={handleInputChange}
+                                                />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Email</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">
+                                                <input
+                                                    type="text"
+                                                    name="email"
+                                                    value={user.email}
+                                                    onChange={handleInputChange}
+                                                />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Phone</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">
+                                                <input
+                                                    type="tel"
+                                                    name="phone"
+                                                    value={user.phone}
+                                                    onChange={handleInputChange}
+                                                />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Gender</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">
+                                                <select
+                                                    name="gender"
+                                                    value={user.gender}
+                                                    onChange={handleInputChange}
+                                                >
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <h6 className="mb-0">Address</h6>
+                                            </div>
+                                            <div className="col-sm-9 text-secondary">
+                                                <input
+                                                    type="text"
+                                                    name="address"
+                                                    value={user.address}
+                                                    onChange={handleInputChange}
+                                                />
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div className="row">
+                                            <div className="col-sm-12">
+                                                <button type="submit" className="btn btn-info">
+                                                    Save
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </TemplateUser>
     );
 }

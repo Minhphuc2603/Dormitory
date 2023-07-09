@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [status, setStatus] = useState('');
 
     const usenavigate = useNavigate();
 
@@ -29,7 +30,8 @@ const Login = () => {
             })
             .then((data) => {
               const foundUser = data.find(
-                (user) => user.username === username && user.password === password
+                
+                (user) => user.username === username && user.password === password && user.status===true
               );
               if (foundUser) {
                 console.log('id:', foundUser.id);

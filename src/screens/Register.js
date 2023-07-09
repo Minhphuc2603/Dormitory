@@ -70,6 +70,7 @@ const Register = () => {
       phone,
       address,
       gender,
+     
     };
 
     // Tạo đối tượng tài khoản mới
@@ -78,6 +79,7 @@ const Register = () => {
       username,
       password,
       role: "student",
+      status:true
     };
 
     if (IsValidate()) {

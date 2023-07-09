@@ -6,7 +6,13 @@ import Login from './screens/Login';
 import { ToastContainer } from 'react-toastify';
 import Register from './screens/Register';
 import EditUser from './screens/EditUser';
-// import ManagerUser from './screens/ManagerUser';
+import ManagerUser from './screens/ManagerUser';
+import ViewUser from './screens/ViewUser';
+import ManagerRoom from './screens/ManagerRoom';
+import EditRoom from './screens/EditRoom';
+import ListRoom from './screens/ListRoom';
+import AddRoom from './screens/AddRoom';
+import ManagerAccount from './screens/ManagerAccount';
 
 
 
@@ -17,12 +23,17 @@ function App() {
     <BrowserRouter>   
      <Routes>
      <Route path='/' element={<Home/>}/>
-     <Route path='/user' element={<User/>}/>  
+     <Route path='/user/:id' element={<User/>}/>  
      <Route path='/login' element={<Login/>}/> 
      <Route path='/register' element={<Register/>}/> 
-     <Route path='/user/edit' element={<EditUser/>}/>
-     {/* <Route path='/manageruser' element={<ManagerUser/>}/>  */}
-
+     <Route path='/user/edit/:id' element={<EditUser/>}/>
+     <Route path='/manageruser' element={<ManagerUser/>}/> 
+     <Route path='/view/user/:id' element={<ViewUser/>}/> 
+     <Route path='/managerroom' element={<ManagerRoom/>}/> 
+     <Route path='/edit/room/:id' element={<EditRoom/>}/>
+     <Route path='/listroom' element={<ListRoom/>}/>
+     <Route path='/addroom' element={<AddRoom/>}/>
+     <Route path='/account' element={<ManagerAccount/>}/>
      </Routes>   
     </BrowserRouter>
     </div>

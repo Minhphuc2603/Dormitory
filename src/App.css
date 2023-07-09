@@ -303,9 +303,7 @@ button:hover {
   overflow-x: hidden;
   background-color: var(--white-color);
 }
-.content2{
-  margin-top: 110px;
-}
+
 .divider{
   width:5px;
   height:auto;

@@ -1,92 +1,82 @@
 import { useEffect, useState } from "react";
-
-import { Col, Row, Table, Modal, Pagination } from 'react-bootstrap';
+import TemplateAdmin from "../template/TemplateAdmin";
+import { Col, Row, Table, Pagination, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import TemplateUser from "../template/TemplateUser";
 
-const ListRoom = () => {
-    const [room, setRoom] = useState([])
-    const [dom, setDom] = useState([])
+const ManagerNoti = () => {
+    const [noti, setNoti] = useState([]);
+
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage] = useState(5);
 
     useEffect(() => {
-        fetch('http://localhost:9999/room')
-            .then(resp => resp.json())
-            .then(data => {
-                setRoom(data);
-                console.log(data)
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
+        fetch('http://localhost:9999/notification')
+            .then(response => response.json())
+            .then(data => setNoti(data))
+            .catch(error => console.log(error.message));
     }, []);
-    // Tính toán số trang
-    const totalPages = Math.ceil(room.length / usersPerPage);
+
+
+    const totalPages = Math.ceil(noti.length / usersPerPage);
 
     // Lấy index bắt đầu và kết thúc của list user hiện tại
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentRoom = room.slice(indexOfFirstUser, indexOfLastUser);
-    useEffect(() => {
-        fetch('http://localhost:9999/dom')
-            .then(resp => resp.json())
-            .then(data => {
-                setDom(data);
-                console.log(data)
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
-    }, []);
+    const currentUser = noti.slice(indexOfFirstUser, indexOfLastUser);
 
     return (
-        <TemplateUser>
-            <Row >
+        <TemplateAdmin>
+            <Row>
                 <Col xs={12}>
                     <Row>
                         <Col style={{ textAlign: 'center' }}>
-                            <h2>List Room</h2>
+                            <h2>List Notification</h2>
                         </Col>
                     </Row>
-
+                    <Row>
+                        <Col style={{ textAlign: 'right' }}>
+                            <Link to={'/addroom'}>Create new Notification</Link>
+                        </Col>
+                    </Row>
 
                     <Row>
                         <Col>
                             <Table className="box-shadow 2px ">
                                 <thead>
                                     <tr>
-
-                                        <th>Name</th>
-                                        <th>NameRoom</th>
-                                        <th>numberBed</th>
-
-
-
+                                        <th>NotificationID</th>
+                                        <th>Title</th>
+                                        <th>Document</th>
+                                        <th scope={2}>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {
-                                        currentRoom.map(r => (
-                                            <tr key={r.id}>
+                                    {currentUser.map(n => (
+                                        <tr key={n.id}>
+                                            <td>{n.id}</td>
+                                            <td>{n.title}</td>
+                                            <td>{n.Document}</td>
+                                            <td>
+                                                {<>
+                                                    <Link>Edit</Link>
+                                                    &nbsp;
+                                                    &nbsp;
+                                                    &nbsp;
+                                                    <Link>Delete</Link>
+                                                </>
 
-                                                <td>{
-                                                    dom.map(d => d.domId === r.roomId ? d.domName : '')
-                                                }</td>
-                                                <td><Link to={`/register/room`+r.roomId}>{r.nameRoom}</Link></td>
-                                                <td>{r.numberBed}</td>
+                                                }
+                                            </td>
 
-
-
-
-                                            </tr>
-
-                                        ))
-                                    }
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </Table>
                             <Pagination style={{ justifyContent: "flex-end" }}>
-                                <Pagination.First onClick={() => setCurrentPage(1)} disabled={currentPage === 1} />
+                                <Pagination.First
+                                    onClick={() => setCurrentPage(1)}
+                                    disabled={currentPage === 1}
+                                />
                                 <Pagination.Prev
                                     onClick={() => setCurrentPage(currentPage - 1)}
                                     disabled={currentPage === 1}
@@ -113,9 +103,8 @@ const ListRoom = () => {
                     </Row>
                 </Col>
             </Row>
-
-        </TemplateUser>
+        </TemplateAdmin>
     );
-}
+};
 
-export default ListRoom;
+export default ManagerNoti;

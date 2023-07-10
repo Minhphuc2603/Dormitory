@@ -48,7 +48,7 @@ export default function ProfileUser() {
                                     <div className="card-body">
                                         <div className="d-flex flex-column align-items-center text-center">
                                             <img
-                                                src={users.avatar}
+                                                src="https://www.facebook.com/photo/?fbid=531977505201756&set=pob.100051685322616"
                                                 alt="Load"
                                                 className="rounded-circle"
                                                 width={150}
@@ -95,17 +95,8 @@ export default function ProfileUser() {
                                             <div className="col-sm-3">
                                                 <h6 className="mb-0">Gender</h6>
                                             </div>
-                                            <div className="col-sm-9 text-secondary">{
-                                                users.gender ? (
-                                                    <span style={{ color: "blue" }}>
-                                                        Male
-                                                    </span>
-                                                ) : (
-                                                    <span style={{ color: "red" }}>
-                                                        FeMale
-                                                    </span>
-                                                )
-                                            }</div>
+                                            <div className="col-sm-9 text-secondary">
+                                                {users.gender} </div>
                                         </div>
                                         <hr />
                                         <div className="row">
@@ -159,7 +150,7 @@ export default function ProfileUser() {
                                     <div className="card-body">
                                         <div className="d-flex flex-column align-items-center text-center">
                                             <img
-                                                src={users.avatar}
+                                                src="https://demoda.vn/wp-content/uploads/2022/01/anh-songoku-dep-nhat.jpg"
                                                 alt="Load"
                                                 className="rounded-circle"
                                                 width={150}
@@ -207,16 +198,7 @@ export default function ProfileUser() {
                                                 <h6 className="mb-0">Gender</h6>
                                             </div>
                                             <div className="col-sm-9 text-secondary">{
-                                                users.gender ? (
-                                                    <span style={{ color: "blue" }}>
-                                                        Male
-                                                    </span>
-                                                ) : (
-                                                    <span style={{ color: "red" }}>
-                                                        FeMale
-                                                    </span>
-                                                )
-                                            }</div>
+                                                users.gender }</div>
                                         </div>
                                         <hr />
                                         <div className="row">

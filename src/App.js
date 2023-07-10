@@ -13,6 +13,7 @@ import EditRoom from './screens/EditRoom';
 import ListRoom from './screens/ListRoom';
 import AddRoom from './screens/AddRoom';
 import ManagerAccount from './screens/ManagerAccount';
+import ManagerNoti from './screens/ManagerNoti';
 
 
 
@@ -34,6 +35,8 @@ function App() {
      <Route path='/listroom' element={<ListRoom/>}/>
      <Route path='/addroom' element={<AddRoom/>}/>
      <Route path='/account' element={<ManagerAccount/>}/>
+     <Route path='/managernoti' element={<ManagerNoti/>}/>
+
      </Routes>   
     </BrowserRouter>
     </div>

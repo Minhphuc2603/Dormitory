@@ -92,17 +92,8 @@ export default function ViewUser() {
                                             <div className="col-sm-3">
                                                 <h6 className="mb-0">Gender</h6>
                                             </div>
-                                            <div className="col-sm-9 text-secondary">{
-                                                users.gender ? (
-                                                    <span style={{ color: "blue" }}>
-                                                        Male
-                                                    </span>
-                                                ) : (
-                                                    <span style={{ color: "red" }}>
-                                                        FeMale
-                                                    </span>
-                                                )
-                                            }</div>
+                                            <div className="col-sm-9 text-secondary">
+                                               {users.gender}</div>
                                         </div>
                                         <hr />
                                         <div className="row">

@@ -88,7 +88,9 @@ const ManagerRoom = () => {
                                                 <td>
                                                     {
                                                         <Link to={'/'} >Delete</Link>
+                                                        
                                                     }
+                                                    
                                                 </td>
 
                                             </tr>

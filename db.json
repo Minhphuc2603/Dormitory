@@ -18,7 +18,7 @@
     },
     {
       "id": "3",
-      "name": "Tran Van Tung",
+      "name": "Luu Van Tung",
       "email": "tunghi@gmail.com",
       "phone": "0974623723",
       "address": "Ha Noi",
@@ -45,6 +45,14 @@
       "name": "Nguyen Thanh Tu",
       "email": "tune@gmail.com",
       "phone": "01282712912",
+      "address": "Ha Noi",
+      "gender": "male"
+    },
+    {
+      "id": 7,
+      "name": "Trinh Van Phuc",
+      "email": "phucne@gmail.com",
+      "phone": "0946488237",
       "address": "Ha Noi",
       "gender": "male"
     }
@@ -76,7 +84,7 @@
       "username": "duynl",
       "password": "123",
       "role": "student",
-      "status": false
+      "status": true
     },
     {
       "id": 5,
@@ -91,6 +99,13 @@
       "password": "123",
       "role": "student",
       "status": false
+    },
+    {
+      "id": 7,
+      "username": "phuctm1",
+      "password": "123",
+      "role": "student",
+      "status": true
     }
   ],
   "dom": [
@@ -118,7 +133,7 @@
       "id": "2",
       "roomId": "1",
       "nameRoom": "102",
-      "numberBed": "6"
+      "numberBed": "2"
     },
     {
       "id": "3",
@@ -173,6 +188,38 @@
       "roomId": "3",
       "nameRoom": "109",
       "numberBed": "2"
+    }
+  ],
+  "notification": [
+    {
+      "id": "1",
+      "title": "Minh Phuc",
+      "Document": "Dom sẽ mất điện vào ngày kia "
+    },
+    {
+      "id": "2",
+      "title": "Minh Phuc",
+      "Document": "Dom sẽ mất nước vào ngày mai "
+    },
+    {
+      "id": "3",
+      "title": "Minh Phuc",
+      "Document": "Dom A bị bẩn"
+    },
+    {
+      "id": "4",
+      "title": "Minh Phuc",
+      "Document": "Học sinh nghỉ hè "
+    },
+    {
+      "id": "5",
+      "title": "Minh Phuc",
+      "Document": "Không được Trèo Dom "
+    },
+    {
+      "id": "6",
+      "title": "Minh Phuc",
+      "Document": "Ăn trộm ở dom B "
     }
   ]
 }

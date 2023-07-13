@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import TemplateAdmin from "../template/TemplateAdmin";
-import { Col, Row, Table,Modal ,Pagination} from 'react-bootstrap';
+import { Col, Row, Table, Modal, Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ManagerRoom = () => {
@@ -20,13 +20,13 @@ const ManagerRoom = () => {
                 console.log(err.message);
             })
     }, []);
-     // Tính toán số trang
-     const totalPages = Math.ceil(room.length / usersPerPage);
+    // Tính toán số trang
+    const totalPages = Math.ceil(room.length / usersPerPage);
 
-     // Lấy index bắt đầu và kết thúc của list user hiện tại
-     const indexOfLastUser = currentPage * usersPerPage;
-     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-     const currentRoom = room.slice(indexOfFirstUser, indexOfLastUser);
+    // Lấy index bắt đầu và kết thúc của list user hiện tại
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentRoom = room.slice(indexOfFirstUser, indexOfLastUser);
     useEffect(() => {
         fetch('http://localhost:9999/dom')
             .then(resp => resp.json())
@@ -38,7 +38,7 @@ const ManagerRoom = () => {
                 console.log(err.message);
             })
     }, []);
-    
+
     return (
         <TemplateAdmin>
             <Row >
@@ -49,10 +49,10 @@ const ManagerRoom = () => {
                         </Col>
                     </Row>
                     <Row>
-                    <Col style={{ textAlign: 'right' }}>
-                        <Link to={'/addroom'}>Create new Room</Link>
-                    </Col>
-                </Row>
+                        <Col style={{ textAlign: 'right' }}>
+                            <Link to={'/addroom'}>Create new Room</Link>
+                        </Col>
+                    </Row>
 
                     <Row>
                         <Col>
@@ -63,7 +63,8 @@ const ManagerRoom = () => {
                                         <th>Name</th>
                                         <th>NameRoom</th>
                                         <th>numberBed</th>
-                                        
+                                        <th>Price(VND)</th>
+
 
                                         <th colSpan={2}>Action</th>
                                     </tr>
@@ -73,24 +74,26 @@ const ManagerRoom = () => {
                                         currentRoom.map(r => (
                                             <tr key={r.id}>
 
-                                               <td>{
-                                               dom.map(d => d.domId === r.roomId ? d.domName : '')
-                                               }</td>
+                                                <td>{
+                                                    dom.map(d => d.domId === r.roomId ? d.domName : '')
+                                                }</td>
                                                 <td>{r.nameRoom}</td>
                                                 <td>{r.numberBed}</td>
 
 
                                                 <td>
-                                                    {
-                                                        <Link to={'/edit/room/' + r.id}>Edit</Link>
-                                                    }
+                                                    {r.price}
                                                 </td>
                                                 <td>
                                                     {
-                                                        <Link to={'/'} >Delete</Link>
-                                                        
+                                                        <Link to={'/edit/room/' + r.id}>Edit</Link>
                                                     }
                                                     
+                                                    {
+                                                        <Link to={'/'} >Delete</Link>
+
+                                                    }
+
                                                 </td>
 
                                             </tr>
@@ -99,7 +102,7 @@ const ManagerRoom = () => {
                                     }
                                 </tbody>
                             </Table>
-                            <Pagination style={{justifyContent: "flex-end"}}>
+                            <Pagination style={{ justifyContent: "flex-end" }}>
                                 <Pagination.First onClick={() => setCurrentPage(1)} disabled={currentPage === 1} />
                                 <Pagination.Prev
                                     onClick={() => setCurrentPage(currentPage - 1)}

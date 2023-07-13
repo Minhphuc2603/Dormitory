@@ -19,9 +19,42 @@ const EditUser = () => {
     const handleInputChange = (event) => {
         setUser({ ...user, [event.target.name]: event.target.value });
     };
+    const IsValidate = () => {
+        let isproceed = true;
+        let errormessage = "Please enter the value in ";
+        if (user.name === null || user.name.trim() === "") {
+          isproceed = false;
+          errormessage += "Username";
+        }
+        if (user.email === null || user.email.trim() === "") {
+            isproceed = false;
+            errormessage += "Email";
+          }
+        if (user.phone === null || user.email.trim() === "") {
+            isproceed = false;
+            errormessage += "Phone";
+          }
+        if (user.address === null || user.address.trim() === "") {
+            isproceed = false;
+            errormessage += "Address";
+          }
+
+        if (!isproceed) {
+            toast.warning(errormessage);
+        
+        }else {
+            if (/^0\d{9}$/.test(user.phone)) {
+            } else {
+              isproceed = false;
+              toast.warning("Phone numbers need 10 digits and start with the digit 0");
+            }
+          }
+        return isproceed;
+    }
 
     const handleSave = (e) => {
         e.preventDefault();
+        if(IsValidate()){
         if (window.confirm("Are you sure you want to edit?")) {
             fetch(`http://localhost:9999/user/${id}`, {
                 method: "PUT",
@@ -37,6 +70,7 @@ const EditUser = () => {
                     toast.error('Failed to edit: ' + err.message);
                 });
         }
+    }
     };
 
     useEffect(() => {

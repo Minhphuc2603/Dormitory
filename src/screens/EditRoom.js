@@ -9,6 +9,7 @@ const EditRoom = () => {
     const [nameRoom, setNameRoom] = useState("");
     const [numberBed, setNumberBed] = useState("");
     const [roomId,setRomId] = useState("");
+    const [price,setPrice] = useState("")
     const[dom,setDom]=useState([]);
 
     useEffect(() => {
@@ -18,6 +19,7 @@ const EditRoom = () => {
                 setNameRoom(data.nameRoom || "");
                 setNumberBed(data.numberBed || "");
                 setRomId(data.roomId || "")
+                setPrice(data.price || "")
             });
     }, [id]);
     useEffect(() => {
@@ -33,19 +35,32 @@ const EditRoom = () => {
     }, []);
 
     const navigate = useNavigate();
+    const IsValidate = () => {
+        let isproceed = true;
+        
+        if (nameRoom === null || nameRoom.trim() === "") {
+          isproceed = false;
+          toast.warning('Please enter the value in name Room');
+        }
+        if (numberBed <= 0 || numberBed.trim() === "") {
+            isproceed = false;
+            toast.warning('Please enter the value in number Bed');
+          }
+     
+        return isproceed;
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (nameRoom.trim() === "") {
-            alert("Please enter a valid name");
-            return;
-        } else {
+        if (IsValidate()){
             const updatedRoom = {
                 id,
                 roomId,
                 nameRoom,
                 numberBed,
+                price,
             };
 
             fetch(`http://localhost:9999/room/${id}`, {
@@ -86,7 +101,13 @@ const EditRoom = () => {
                                     value={dom.find(d => d.domId === roomId)?.domName || ''}
                                     onChange={(e) => setNameRoom(e.target.value)}
                                     disabled
-                                />
+                                />{nameRoom.trim() === "" && (
+                                    <Form.Text>
+                                        <span style={{ color: "red" }}>
+                                            Please enter a valid name
+                                        </span>
+                                    </Form.Text>
+                                )}
                                 
                             
                             </Form.Group>
@@ -116,6 +137,7 @@ const EditRoom = () => {
                                     value={numberBed}
                                     onChange={(e) => setNumberBed(e.target.value)}
                                 />
+                                {numberBed <= 0 && <Form.Text style={{ color: 'red' }}>Please enter number Bed &gt; 0</Form.Text>}
                             </Form.Group>
                         </Row>
                         <Row>

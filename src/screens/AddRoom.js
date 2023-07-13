@@ -12,12 +12,24 @@ const AddRoom = () => {
     const [roomId, setRomId] = useState("1");
     const [dom, setDom] = useState([]);
     const [room,setRoom] = useState([])
+    const IsValidate = () => {
+        let isproceed = true;
+        
+        if (nameRoom === null || nameRoom.trim() === "") {
+          isproceed = false;
+          toast.warning('Please enter the value in name Room');
+        }
+        if (numberBed <= 0 || numberBed.trim() === "") {
+            isproceed = false;
+            toast.warning('Please enter the value in number Bed');
+          }
+     
+        return isproceed;
+    }
 
     const handelSubmit = (e) => {
         e.preventDefault();
-        if (nameRoom.length === 0 || numberBed < 0 ) {
-            alert("loi vai o");
-        } else {
+        if (IsValidate() ) {
             const room = { id:nextUserId, roomId, nameRoom,numberBed }
             console.log(room);
             fetch('http://localhost:9999/room', {

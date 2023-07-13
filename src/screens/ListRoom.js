@@ -59,7 +59,8 @@ const ListRoom = () => {
 
                                         <th>Name</th>
                                         <th>NameRoom</th>
-                                        <th>numberBed</th>
+                                        <th>NumberBed</th>
+                                        <th>Price(VND)</th>
 
 
 
@@ -75,7 +76,7 @@ const ListRoom = () => {
                                                 }</td>
                                                 <td><Link to={`/register/room`+r.roomId}>{r.nameRoom}</Link></td>
                                                 <td>{r.numberBed}</td>
-
+                                                <td style={{color:'red'}}>{r.price}</td>
 
 
 

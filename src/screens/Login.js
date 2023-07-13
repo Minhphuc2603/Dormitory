@@ -13,7 +13,7 @@ const Login = () => {
     useEffect(()=>{
         const id =sessionStorage.getItem('id')
         if(id){
-            usenavigate("/")
+            usenavigate("/error")
         }
     },[])
 

@@ -14,6 +14,8 @@ import ListRoom from './screens/ListRoom';
 import AddRoom from './screens/AddRoom';
 import ManagerAccount from './screens/ManagerAccount';
 import ManagerNoti from './screens/ManagerNoti';
+import BookingBed from './screens/BookingBed';
+import Error from './screens/Error';
 
 
 
@@ -36,6 +38,8 @@ function App() {
      <Route path='/addroom' element={<AddRoom/>}/>
      <Route path='/account' element={<ManagerAccount/>}/>
      <Route path='/managernoti' element={<ManagerNoti/>}/>
+     <Route path='/booking' element={<BookingBed/>}/>
+     <Route path='/error' element={<Error/>}/>
 
      </Routes>   
     </BrowserRouter>

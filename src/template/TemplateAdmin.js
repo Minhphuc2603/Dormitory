@@ -1,7 +1,7 @@
 import SideBarAdmin from "../component/SideBarAdmin";
 import { Row,Col } from "react-bootstrap";
 
-export default function TemplateUser({title="", children}){
+export default function TemplateAdmin({title="", children}){
     return(
         <Row style={{justifyContent:'flex-start'}}>
             <Col md={2} xs={2}>

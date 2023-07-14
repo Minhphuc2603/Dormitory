@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [status, setStatus] = useState('');
+    
 
     const usenavigate = useNavigate();
 

@@ -3,6 +3,7 @@ import '../styles/dashboard.css';
 import { Link } from 'react-router-dom';
 
 
+
 function SideBarUser() {
     const id = sessionStorage.getItem('id')
     
@@ -40,7 +41,7 @@ function SideBarUser() {
                             <div className="sidebar-brand-icon rotate-n-15">
                                 <i className="fas fa-laugh-wink"></i>
                             </div>
-                            <div className="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                            <div className="sidebar-brand-text mx-3"></div>
                             <div className="text-center d-none d-md-inline">
                                 <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
                             </div>
@@ -54,17 +55,12 @@ function SideBarUser() {
                         <li className="nav-item active">
                             <Link className="nav-link" to={'/'} >
                             
-                                <span>Home</span>
+                                <span> Home</span>
                                 </Link>
                         </li>
 
-                        {/*  <!-- Divider --> */}
-                        <hr className="sidebar-divider" />
-
-                        {/*   <!-- Heading --> */}
-                        <div className="sidebar-heading">
-                            Interface
-                        </div>
+                       
+                      
 
                         {/*  <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
@@ -76,23 +72,17 @@ function SideBarUser() {
                             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">View</h6>
-                                    
+                                                                     
                                     <Link className="collapse-item" to={`/listroom`}>List Room</Link>
                                     
                                 </div>
                             </div>
                         </li>
 
-                        {/* <!-- Nav Item - Utilities Collapse Menu --> */}
                         
-
-                        {/*  <!-- Divider --> */}
                         <hr className="sidebar-divider" />
 
-                        {/* <!-- Heading --> */}
-                        <div className="sidebar-heading">
-                            Addons
-                        </div>
+                        
 
                         {/*  <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
@@ -113,12 +103,19 @@ function SideBarUser() {
                                 </div>
                             </div>
                         </li>
+                        
 
                         {/* <!-- Nav Item - Charts --> */}
                        
 
                         {/* <!-- Divider --> */}
                         <hr className="sidebar-divider d-none d-md-block" />
+                        <li className="nav-item active">
+                            <Link className="nav-link" to={'/booking'} >
+                            
+                                <span>Booking Bed </span>
+                                </Link>
+                        </li>
                     </ul>
                     
                     

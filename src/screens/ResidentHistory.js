@@ -4,26 +4,41 @@ import { Col, Row, Table,} from 'react-bootstrap';
 import { Pagination } from "antd"
 import TemplateUser from "../template/TemplateUser";
 
-const ListRoom = () => {
+const ResidentHistory = () => {
 
-    const [bed, setBed] = useState([])
+    const id = sessionStorage.getItem("id")
+    
+    const [resident, setResident] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage] = useState(5);
+    const [user,setUser] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:9999/user/${id}`)
+            .then(resp => resp.json())
+            .then(data => {
+                setUser(data);
+                console.log(data)
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    }, [id]);
 
 
     // Tính toán số trang
-    const totalPages = Math.ceil(bed.length / usersPerPage);
+    const totalPages = Math.ceil(resident.length / usersPerPage);
 
     // Lấy index bắt đầu và kết thúc của list user hiện tại
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentBed = bed.slice(indexOfFirstUser, indexOfLastUser);
+    const currentBed = resident.slice(indexOfFirstUser, indexOfLastUser);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     useEffect(() => {
-        fetch('http://localhost:9999/doms')
+        fetch(`http://localhost:9999/residentHistory`)
             .then(resp => resp.json())
             .then(data => {
-                setBed(data);
+                setResident(data);
                 console.log(data)
             })
             .catch(err => {
@@ -63,7 +78,11 @@ const ListRoom = () => {
                                         currentBed.map(b => (
                                             <tr key={b.id}>
 
-                                                <td>{b.domName}</td>
+                                                <td>{
+                                                
+                                                    user.StudentID === b.StudentID ? user.name : ""
+                                               
+                                                }</td>
                                                 <td>{b.domID}&ensp;-&ensp;{b.slot}</td>
                                                 <td>{b.totalBed}</td>
                                                 <td>{b.usedBed}</td>
@@ -71,29 +90,12 @@ const ListRoom = () => {
                                             </tr>
                                         ))
                                     }
-                                    <tr>
-                                        <td colSpan="2">Total</td>
-                                        <td>
-                                            {
-                                                currentBed.reduce((total, b) => total + b.totalBed, 0)
-                                            }
-                                        </td>
-                                        <td>
-                                            {
-                                                currentBed.reduce((total, b) => total + b.usedBed, 0)
-                                            }
-                                        </td>
-                                        <td>
-                                            {
-                                                currentBed.reduce((total, b) => total + b.freeBed, 0)
-                                            }
-                                        </td>
-                                    </tr>
+                                    
                                 </tbody>
                             </Table>
                             <Pagination
                                 current={currentPage}
-                                total={bed.length}
+                                total={resident.length}
                                 pageSize={usersPerPage}
                                 onChange={paginate}
 
@@ -108,4 +110,4 @@ const ListRoom = () => {
     );
 }
 
-export default ListRoom;
+export default ResidentHistory;

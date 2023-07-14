@@ -2,6 +2,7 @@
   "user": [
     {
       "id": "1",
+      "StudentID": "HE163500",
       "name": "Van Tung",
       "email": "tungne@gmail.com",
       "phone": "0123482127",
@@ -11,6 +12,7 @@
     },
     {
       "id": "2",
+      "StudentID": "HE163501",
       "name": "trinh minh phuc",
       "email": "trinhphuc@gmail.com",
       "phone": "0946488236",
@@ -20,6 +22,7 @@
     },
     {
       "id": "3",
+      "StudentID": "HE163502",
       "name": "Luu Van Tung",
       "email": "tunghi@gmail.com",
       "phone": "0974623723",
@@ -29,6 +32,7 @@
     },
     {
       "id": 4,
+      "StudentID": "HE163503",
       "name": "Nguyen Luong DUy",
       "email": "phuctm@gmail.com",
       "phone": "120210209912",
@@ -38,15 +42,17 @@
     },
     {
       "id": 5,
+      "StudentID": "HE163504",
       "name": "Le Minh Cuong",
       "email": "cuonglm@gmail.com",
       "phone": "0983717221",
       "address": "Nam Dinh",
-      "gender": "male",
-      "cost": 2000000
+      "gender": "female",
+      "cost": 1150000
     },
     {
       "id": 6,
+      "StudentID": "HE163505",
       "name": "Nguyen Thanh Tu",
       "email": "tune@gmail.com",
       "phone": "01282712912",
@@ -56,6 +62,7 @@
     },
     {
       "id": 7,
+      "StudentID": "HE163506",
       "name": "Trinh Van Phuc",
       "email": "phucne@gmail.com",
       "phone": "0946488237",
@@ -70,7 +77,7 @@
       "username": "tungne",
       "password": "123",
       "role": "student",
-      "status": true
+      "status": false
     },
     {
       "id": "2",
@@ -115,20 +122,6 @@
       "status": true
     }
   ],
-  "dom": [
-    {
-      "domId": "1",
-      "domName": "A"
-    },
-    {
-      "domId": "2",
-      "domName": "B"
-    },
-    {
-      "domId": "3",
-      "domName": "C"
-    }
-  ],
   "rooms": [
     {
       "id": "1",
@@ -152,16 +145,16 @@
   "doms": [
     {
       "domName": "DomA",
-      "domID": "A3",
+      "domID": "A",
       "slot": "slot3",
       "totalBed": 150,
-      "usedBed": 32,
-      "freeBed": 118,
+      "usedBed": 35,
+      "freeBed": 115,
       "id": 1
     },
     {
       "domName": "DomB",
-      "domID": "B3",
+      "domID": "B",
       "slot": "slot3",
       "totalBed": 150,
       "usedBed": 150,
@@ -170,99 +163,21 @@
     },
     {
       "domName": "DomA",
-      "domID": "A4",
+      "domID": "A",
       "slot": "slot4",
       "totalBed": 50,
-      "usedBed": 29,
-      "freeBed": 21,
+      "usedBed": 30,
+      "freeBed": 20,
       "id": 3
     },
     {
       "domName": "DomB",
-      "domID": "B4",
+      "domID": "B",
       "slot": "slot4",
-      "totalBed": 0,
+      "totalBed": 60,
       "usedBed": 0,
-      "freeBed": 0,
+      "freeBed": 60,
       "id": 4
-    }
-  ],
-  "room": [
-    {
-      "id": "1",
-      "roomId": "1",
-      "nameRoom": "101",
-      "numberBed": "4"
-    },
-    {
-      "id": "2",
-      "roomId": "1",
-      "nameRoom": "102",
-      "numberBed": "2",
-      "price": "950.000"
-    },
-    {
-      "id": "3",
-      "roomId": "1",
-      "nameRoom": "103",
-      "numberBed": 4,
-      "price": "650.000"
-    },
-    {
-      "id": "4",
-      "roomId": "2",
-      "nameRoom": "201",
-      "numberBed": 5,
-      "price": "550.000"
-    },
-    {
-      "id": "5",
-      "roomId": "2",
-      "nameRoom": "202",
-      "numberBed": 4,
-      "price": "650.000"
-    },
-    {
-      "id": "6",
-      "roomId": "2",
-      "nameRoom": "203",
-      "numberBed": 4,
-      "price": "650.000"
-    },
-    {
-      "id": "7",
-      "roomId": "3",
-      "nameRoom": "301",
-      "numberBed": 5,
-      "price": "550.000"
-    },
-    {
-      "id": "8",
-      "roomId": "3",
-      "nameRoom": "302",
-      "numberBed": 4,
-      "price": "650.000"
-    },
-    {
-      "id": "9",
-      "roomId": "3",
-      "nameRoom": "303",
-      "numberBed": 5,
-      "price": "550.000"
-    },
-    {
-      "id": 10,
-      "roomId": "2",
-      "nameRoom": "105",
-      "numberBed": "3",
-      "price": "950.000"
-    },
-    {
-      "id": 11,
-      "roomId": "3",
-      "nameRoom": "109",
-      "numberBed": "2",
-      "price": "1.150.000"
     }
   ],
   "notification": [
@@ -296,5 +211,149 @@
       "title": "Minh Phuc",
       "Document": "Ăn trộm ở dom B "
     }
+  ],
+  "residentHistory": [
+    {
+      "StudentID": "HE163500",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 2300000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 1
+    },
+    {
+      "StudentID": "HE163500",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 2300000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 2
+    },
+    {
+      "StudentID": "HE163500",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 850000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 3
+    },
+    {
+      "StudentID": "HE163500",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 2300000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 4
+    },
+    {
+      "StudentID": "HE163500",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 2300000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 5
+    },
+    {
+      "StudentID": "HE163500",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 2300000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 6
+    },
+    {
+      "StudentID": "HE163500",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 850000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 7
+    },
+    {
+      "StudentID": "HE163500",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 850000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 8
+    },
+    {
+      "StudentID": "HE163500",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 2300000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 9
+    },
+    {
+      "StudentID": "HE163502",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 2300000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 10
+    },
+    {
+      "StudentID": "HE163502",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 2300000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 11
+    },
+    {
+      "StudentID": "HE163502",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 850000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 12
+    },
+    {
+      "StudentID": "HE163502",
+      "Information": "2",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 850000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 13
+    },
+    {
+      "StudentID": "HE163502",
+      "Information": "DomA-3 beds",
+      "CheckIn": "2023/07/12",
+      "CheckOut": "Keep current bed",
+      "Price": 2300000,
+      "Semester": "5",
+      "Year": 2023,
+      "id": 14
+    }
+    
+    
   ]
 }

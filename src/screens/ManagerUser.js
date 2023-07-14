@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import TemplateAdmin from "../template/TemplateAdmin";
-import { Col, Row, Table, Pagination, Button } from 'react-bootstrap';
+import { Col, Row, Table, } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Pagination } from "antd";
 
 const ManagerUser = () => {
     const [users, setUsers] = useState([]);
@@ -37,6 +38,9 @@ const ManagerUser = () => {
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUser = users.slice(indexOfFirstUser, indexOfLastUser);
+    
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
     return (
         <TemplateAdmin>
@@ -90,33 +94,14 @@ const ManagerUser = () => {
                                     ))}
                                 </tbody>
                             </Table>
-                            <Pagination style={{ justifyContent: "flex-end" }}>
-                                <Pagination.First
-                                    onClick={() => setCurrentPage(1)}
-                                    disabled={currentPage === 1}
-                                />
-                                <Pagination.Prev
-                                    onClick={() => setCurrentPage(currentPage - 1)}
-                                    disabled={currentPage === 1}
-                                />
-                                {Array.from({ length: totalPages }, (_, index) => (
-                                    <Pagination.Item
-                                        key={index + 1}
-                                        active={index + 1 === currentPage}
-                                        onClick={() => setCurrentPage(index + 1)}
-                                    >
-                                        {index + 1}
-                                    </Pagination.Item>
-                                ))}
-                                <Pagination.Next
-                                    onClick={() => setCurrentPage(currentPage + 1)}
-                                    disabled={currentPage === totalPages}
-                                />
-                                <Pagination.Last
-                                    onClick={() => setCurrentPage(totalPages)}
-                                    disabled={currentPage === totalPages}
-                                />
-                            </Pagination>
+                            <Pagination
+                                current={currentPage}
+                                total={users.length}
+                                pageSize={usersPerPage}
+                                onChange={paginate}
+
+                                style={{ marginTop: "16px", textAlign: "center" }}
+                            />
                         </Col>
                     </Row>
                 </Col>

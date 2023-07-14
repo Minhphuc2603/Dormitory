@@ -163,6 +163,7 @@ const EditUser = () => {
                                             </div>
                                             <div className="col-sm-9 text-secondary">
                                                 <select
+                                                     style={{width:'100%' , height:'40px'}}
                                                     name="gender"
                                                     value={user.gender}
                                                     onChange={handleInputChange}

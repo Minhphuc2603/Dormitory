@@ -58,7 +58,7 @@ export default function ProfileUser() {
                                                 <h4>{account.username}</h4>
                                                 <p className="text-secondary mb-1">FPT University</p>
                                                 <p className="text-muted font-size-sm">
-                                                    {users.address}
+                                                    {users.StudentID}
                                                 </p>
 
                                             </div>
@@ -160,7 +160,7 @@ export default function ProfileUser() {
                                                 <h4>{account.username}</h4>
                                                 <p className="text-secondary mb-1">FPT University</p>
                                                 <p className="text-muted font-size-sm">
-                                                    {users.address}
+                                                {users.StudentID}
                                                 </p>
 
                                             </div>

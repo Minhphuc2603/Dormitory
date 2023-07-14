@@ -16,6 +16,7 @@ import ManagerAccount from './screens/ManagerAccount';
 import ManagerNoti from './screens/ManagerNoti';
 import BookingBed from './screens/BookingBed';
 import Error from './screens/Error';
+import ResidentHistory from './screens/ResidentHistory';
 
 
 
@@ -40,6 +41,10 @@ function App() {
      <Route path='/managernoti' element={<ManagerNoti/>}/>
      <Route path='/booking' element={<BookingBed/>}/>
      <Route path='/error' element={<Error/>}/>
+     <Route path='/*' element={<Error/>}/>
+     <Route path='/resident' element={<ResidentHistory/>}/>
+     
+
 
      </Routes>   
     </BrowserRouter>

@@ -1,19 +1,21 @@
 import { Col, Container, Row } from "react-bootstrap";
 import TemplateUser from "../template/TemplateUser";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const BookingBed = () => {
     const id = sessionStorage.getItem('id')
     console.log(id)
+
+
     const [page, setPage] = useState(true)
     const [room, setRoom] = useState([])
     const [select, setSelect] = useState({})
     const [cost, setCost] = useState()
     const [user, setUser] = useState({})
     const [slot, setSlot] = useState([])
-    const [dom1,setDom1] = useState([])
+    const [dom1, setDom1] = useState([])
 
     const [viewBed, setViewBed] = useState([]);
     const [typeRoom, setTypeRoom] = useState([])
@@ -21,7 +23,7 @@ const BookingBed = () => {
     const [roomId, setRoomId] = useState([])
     const [check, setCheck] = useState([])
     const [freeBed, setFreeBed] = useState([])
-    const [domID,setdomID]=useState([])
+    const [domID, setdomID] = useState([])
     const next = () => {
         if (cost) {
             setPage(false)
@@ -31,6 +33,7 @@ const BookingBed = () => {
     const onSubmit1 = data => {
         setPage(true)
     }
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch('http://localhost:9999/user/' + id)
@@ -43,28 +46,26 @@ const BookingBed = () => {
                 console.log(err.message);
             })
     }, []);
-    const handleChange = (value) => {
-        // const a = room.filter(e => e?.id === value)
-        // setCost(`${(a[0]?.cost).toLocaleString('vi-VN')} VND`)
-        // setSelect(a[0])
 
-    };
     useEffect(() => {
         fetch('http://localhost:9999/rooms')
             .then(resp => resp.json())
             .then(data => {
                 setRoom(data);
                 console.log(data)
+
             })
             .catch(err => {
                 console.log(err.message);
             })
     }, []);
     function updateCost(event) {
+
         //tra ve 1 index o select
-        const selectedIndex = event.target.selectedIndex;
+        const selectedIndex = event.target.selectedIndex - 1;
         //tra ve 1 mang dc chon
         const selectedOption = room[selectedIndex];
+
         const selectedCost = selectedOption.cost;
         const selectedTypeRoom = selectedOption.type_room;
         const selectedSlot = selectedOption.room_id
@@ -73,7 +74,8 @@ const BookingBed = () => {
         setRoomId(selectedSlot)
 
     }
-    
+
+
 
 
     useEffect(() => {
@@ -81,26 +83,14 @@ const BookingBed = () => {
             .then(resp => resp.json())
             .then(data => {
                 setDoms(data);
-                // const filteredData = data.filter(item => item.slot === roomId );
-                // setCheck(filteredData)
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
-    }, []);
-    useEffect(() => {
-        fetch('http://localhost:9999/doms/'+domID)
-            .then(resp => resp.json())
-            .then(data => {
-                setDom1(data);
-                console.log("hihi",data)
                 
             })
             .catch(err => {
                 console.log(err.message);
             })
     }, []);
-    console.log(domID)
+
+    console.log("domidne", domID)
     useEffect(() => {
         const filteredDoms = doms.filter((dom) => dom.slot === roomId);
         setCheck(filteredDoms);
@@ -109,27 +99,45 @@ const BookingBed = () => {
     function updateBed(event) {
 
         //tra ve 1 index o select
-        const selectedIndex = event.target.selectedIndex;
+        const selectedIndex = event.target.selectedIndex-1;
         //tra ve 1 mang dc chon
         const selectedOption = check[selectedIndex];
         const selectedBed = selectedOption.freeBed;
         const selectedDomID = selectedOption.id
         setFreeBed(selectedBed)
         setdomID(selectedDomID)
-        
+
     }
-    const updateDom ={
-      domName: dom1.domName,
-      domID: dom1.domID,
-      slot: dom1.slot,
-      totalBed: dom1.totalBed,
-      usedBed: dom1.usedBed+1,
-      freeBed: dom1.freeBed-1,
-      id: domID
+
+
+    useEffect(() => {
+        fetch('http://localhost:9999/doms/' + domID)
+            .then(resp => resp.json())
+            .then(data => {
+                setDom1(data);
+                console.log("hihi", data)
+
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    }, [domID]);
+
+
+
+
+    const updateDom = {
+        domName: dom1.domName,
+        domID: dom1.domID,
+        slot: dom1.slot,
+        totalBed: dom1.totalBed,
+        usedBed: dom1.usedBed + 1,
+        freeBed: dom1.freeBed - 1,
+        id: domID
     }
-    console.log("hihi",updateDom)
-    
-    
+    console.log("hihiupdate", updateDom)
+
+
     const updateUser = {
         id: user.id,
         name: user.name,
@@ -141,6 +149,8 @@ const BookingBed = () => {
         cost: (user.cost) - cost
 
     };
+
+
     const booking = () => {
         fetch(`http://localhost:9999/user/${id}`, {
             method: "PUT",
@@ -164,6 +174,8 @@ const BookingBed = () => {
             .catch((err) => {
                 toast.error('Failed to edit: ' + err.message);
             });
+        toast.success('Success');
+        navigate("/paymentHistory")
     }
 
 
@@ -182,9 +194,16 @@ const BookingBed = () => {
                         <h4>Room type</h4>
                         <select id="room" style={{ width: "100%", height: '40px' }} onChange={updateCost}>
 
+
+
+
+                            <option value="" disabled selected>
+                                Null
+                            </option>
+
                             {room.map(r => (
 
-                                <option value={r.id} >{r.type_room}-{r.cost}</option>
+                                <option value={r.id} key={r.id} >{r.type_room}-{r.cost}</option>
                             ))}
                         </select>
                         <h4>Price/Bed/Semester</h4>
@@ -213,7 +232,7 @@ const BookingBed = () => {
                         <div className='w-96 col-6'>
                             <form onSubmit={(onSubmit1)} >
                                 <div className="grid grid-cols-2 gap-4">
-                                    <Link to={"/availableBeds"} style={{
+                                    <Link to={"/listroom"} style={{
                                         background: "#ffffff",
                                         border: "1px solid #f36f21",
                                         borderRadius: 12,
@@ -223,11 +242,15 @@ const BookingBed = () => {
                                         color: "#f36f21",
                                         height: '50px'
                                     }} >
-                                        See available beds
+                                        See list room
                                     </Link>
                                     <div>Room Type<input disabled value={`${typeRoom}-${cost}`} /></div>
                                     <div>DOM</div>
                                     <select id="room" style={{ width: "100%", height: '40px' }} onChange={updateBed}>
+                                        <option value="" disabled selected>
+                                            Null
+                                        </option>
+
                                         {check.map(c => (
                                             <option value={c.id} >{c.domID}</option>
                                         ))}

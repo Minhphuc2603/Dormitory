@@ -7,6 +7,7 @@ import TemplateUser from "../template/TemplateUser";
 const ResidentHistory = () => {
 
     const id = sessionStorage.getItem("id")
+    console.log(id)
     
     const [resident, setResident] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
@@ -17,14 +18,14 @@ const ResidentHistory = () => {
         fetch(`http://localhost:9999/user/${id}`)
             .then(resp => resp.json())
             .then(data => {
-                setUser(data);
-                console.log(data)
+                setUser([data.StudentID]);
+                
             })
             .catch(err => {
                 console.log(err.message);
             })
     }, [id]);
-
+ console.log(user)
 
     // Tính toán số trang
     const totalPages = Math.ceil(resident.length / usersPerPage);
@@ -32,19 +33,21 @@ const ResidentHistory = () => {
     // Lấy index bắt đầu và kết thúc của list user hiện tại
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentBed = resident.slice(indexOfFirstUser, indexOfLastUser);
+    const currentResident = resident.slice(indexOfFirstUser, indexOfLastUser);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     useEffect(() => {
-        fetch(`http://localhost:9999/residentHistory`)
-            .then(resp => resp.json())
-            .then(data => {
-                setResident(data);
-                console.log(data)
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
-    }, []);
+        
+        fetch(`http://localhost:9999/residentHistory?StudentID=${user[0]}`)
+          .then(resp => resp.json())
+          .then(data => {
+            setResident(data);
+            console.log(data);
+          })
+          .catch(err => {
+            console.log(err.message);
+          });
+      }, [user]);
+      
 
     return (
         <TemplateUser>
@@ -52,7 +55,7 @@ const ResidentHistory = () => {
                 <Col xs={12}>
                     <Row>
                         <Col style={{ textAlign: 'center' }}>
-                            <h2>List Room</h2>
+                            <h2>Resident History</h2>
                         </Col>
                     </Row>
 
@@ -63,30 +66,25 @@ const ResidentHistory = () => {
                                 <thead>
                                     <tr>
 
-                                        <th>Dom Name</th>
-                                        <th>Dom ID</th>
-                                        <th>Total Bed</th>
-                                        <th>Used Bed</th>
-                                        <th>Free Bed</th>
-
+                                        <th>StudentID</th>
+                                        <th>Information</th>
+                                        <th>Checkin</th>
+                                        <th>Checkout</th>
+                                        <th>Price</th>
 
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
-                                        currentBed.map(b => (
-                                            <tr key={b.id}>
+                                        currentResident.map(r => (
+                                            <tr key={r.id}>
 
-                                                <td>{
-                                                
-                                                    user.StudentID === b.StudentID ? user.name : ""
-                                               
-                                                }</td>
-                                                <td>{b.domID}&ensp;-&ensp;{b.slot}</td>
-                                                <td>{b.totalBed}</td>
-                                                <td>{b.usedBed}</td>
-                                                <td>{b.freeBed}</td>
+                                                <td>{r.StudentID}</td>
+                                                <td>{r.Information}</td>
+                                                <td>{r.CheckIn}</td>
+                                                <td>{r.CheckOut}</td>
+                                                <td>{r.Price}</td>
                                             </tr>
                                         ))
                                     }

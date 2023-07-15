@@ -116,6 +116,13 @@ function SideBarUser() {
                                 <span>Booking Bed </span>
                                 </Link>
                         </li>
+                        <hr className="sidebar-divider d-none d-md-block" />
+                        <li className="nav-item active">
+                            <Link className="nav-link" to={'/resident'} >
+                            
+                                <span>Resident </span>
+                                </Link>
+                        </li>
                     </ul>
                     
                     

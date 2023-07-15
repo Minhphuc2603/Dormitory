@@ -1,27 +1,27 @@
 {
   "user": [
     {
-      "id": "1",
-      "StudentID": "HE163500",
+      "id": 1,
       "name": "Van Tung",
       "email": "tungne@gmail.com",
       "phone": "0123482127",
       "address": "HCM",
       "gender": "male",
-      "cost": 2000000
+      "StudentID": "HE163500",
+      "cost": 3500000
     },
     {
-      "id": "2",
+      "id": 2,
       "StudentID": "HE163501",
       "name": "trinh minh phuc",
       "email": "trinhphuc@gmail.com",
       "phone": "0946488236",
       "address": "Ha Noi",
       "gender": "male",
-      "cost": 2000000
+      "cost": 1000000000
     },
     {
-      "id": "3",
+      "id": 3,
       "StudentID": "HE163502",
       "name": "Luu Van Tung",
       "email": "tunghi@gmail.com",
@@ -32,13 +32,13 @@
     },
     {
       "id": 4,
-      "StudentID": "HE163503",
       "name": "Nguyen Luong DUy",
       "email": "phuctm@gmail.com",
-      "phone": "120210209912",
+      "phone": "0946488234",
       "address": "Ha Noi",
       "gender": "female",
-      "cost": 2000000
+      "StudentID": "HE163503",
+      "cost": 9000000
     },
     {
       "id": 5,
@@ -62,32 +62,32 @@
     },
     {
       "id": 7,
-      "StudentID": "HE163506",
       "name": "Trinh Van Phuc",
       "email": "phucne@gmail.com",
       "phone": "0946488237",
       "address": "Ha Noi",
       "gender": "male",
-      "cost": 2000000
+      "StudentID": "HE163506",
+      "cost": 300000
     }
   ],
   "account": [
     {
-      "id": "1",
+      "id": 1,
       "username": "tungne",
       "password": "123",
-      "role": "student",
-      "status": false
+      "status": true,
+      "role": "user"
     },
     {
-      "id": "2",
+      "id": 2,
       "username": "phuctm",
       "password": "123",
       "role": "admin",
       "status": true
     },
     {
-      "id": "3",
+      "id": 3,
       "username": "tunglv",
       "password": "123",
       "role": "user",
@@ -97,7 +97,7 @@
       "id": 4,
       "username": "duynl",
       "password": "123",
-      "role": "student",
+      "role": "user",
       "status": true
     },
     {
@@ -148,8 +148,8 @@
       "domID": "A",
       "slot": "slot3",
       "totalBed": 150,
-      "usedBed": 35,
-      "freeBed": 115,
+      "usedBed": 37,
+      "freeBed": 113,
       "id": 1
     },
     {
@@ -166,8 +166,8 @@
       "domID": "A",
       "slot": "slot4",
       "totalBed": 50,
-      "usedBed": 30,
-      "freeBed": 20,
+      "usedBed": 36,
+      "freeBed": 14,
       "id": 3
     },
     {
@@ -175,8 +175,8 @@
       "domID": "B",
       "slot": "slot4",
       "totalBed": 60,
-      "usedBed": 0,
-      "freeBed": 60,
+      "usedBed": 2,
+      "freeBed": 58,
       "id": 4
     }
   ],
@@ -214,146 +214,52 @@
   ],
   "residentHistory": [
     {
-      "StudentID": "HE163500",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
+      "StudentID": "HE163502",
+      "Information": "A - 4 beds",
+      "CheckIn": "12-04-2023",
+      "CheckOut": "23-07-2023",
       "Price": 2300000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 1
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 2300000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 2
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 850000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 3
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 2300000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 4
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 2300000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 5
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 2300000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 6
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 850000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 7
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 850000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 8
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 2300000,
-      "Semester": "5",
-      "Year": 2023,
       "id": 9
     },
     {
-      "StudentID": "HE163502",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
+      "StudentID": "HE163500",
+      "Information": "B - 4 beds",
+      "CheckIn": "12-04-2023",
+      "CheckOut": "23-07-2023",
       "Price": 2300000,
-      "Semester": "5",
-      "Year": 2023,
       "id": 10
     },
     {
-      "StudentID": "HE163502",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 2300000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 11
-    },
-    {
-      "StudentID": "HE163502",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
+      "StudentID": "HE163506",
+      "Information": "A - 3 beds",
+      "CheckIn": "12-04-2023",
+      "CheckOut": "12-07-2023",
       "Price": 850000,
-      "Semester": "5",
-      "Year": 2023,
       "id": 12
     },
     {
-      "StudentID": "HE163502",
-      "Information": "2",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
+      "StudentID": "HE163503",
+      "Information": "DomB-3 beds",
+      "CheckIn": "12-04-2023",
+      "CheckOut": "12-07-2023",
       "Price": 850000,
-      "Semester": "5",
-      "Year": 2023,
       "id": 13
     },
     {
-      "StudentID": "HE163502",
-      "Information": "DomA-3 beds",
-      "CheckIn": "2023/07/12",
-      "CheckOut": "Keep current bed",
-      "Price": 2300000,
-      "Semester": "5",
-      "Year": 2023,
-      "id": 14
+      "StudentID": "HE163500",
+      "Information": "A - 4 beds",
+      "CheckOut": "15-10-2023",
+      "Price": 850000,
+      "CheckIn": "15-7-2023",
+      "id": 17
+    },
+    {
+      "StudentID": "HE163503",
+      "Information": "A - 3 beds",
+      "CheckOut": "15-10-2023",
+      "Price": 1500000,
+      "CheckIn": "15-7-2023",
+      "id": 22
     }
-    
-    
   ]
 }

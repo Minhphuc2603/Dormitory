@@ -17,6 +17,7 @@ import ManagerNoti from './screens/ManagerNoti';
 import BookingBed from './screens/BookingBed';
 import Error from './screens/Error';
 import ResidentHistory from './screens/ResidentHistory';
+import ManagerResident from './screens/ManagerResident';
 
 
 
@@ -43,6 +44,7 @@ function App() {
      <Route path='/error' element={<Error/>}/>
      <Route path='/*' element={<Error/>}/>
      <Route path='/resident' element={<ResidentHistory/>}/>
+     <Route path='/manager/resident' element={<ManagerResident/>}/>
      
 
 

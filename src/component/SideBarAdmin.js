@@ -123,7 +123,14 @@ function SideBarAdmin() {
                        
 
                         {/* <!-- Divider --> */}
+                        
                         <hr className="sidebar-divider d-none d-md-block" />
+                        <li className="nav-item active">
+                            <Link className="nav-link" to={'/manager/resident'} >
+                            
+                                <span>Manager Resident</span>
+                                </Link>
+                        </li>
                     </ul>
                     
                     

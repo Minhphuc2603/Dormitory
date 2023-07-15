@@ -1,4 +1,5 @@
-import { Col, Container, Row } from "react-bootstrap";
+
+
 import TemplateUser from "../template/TemplateUser";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,13 +12,13 @@ const BookingBed = () => {
 
     const [page, setPage] = useState(true)
     const [room, setRoom] = useState([])
-    const [select, setSelect] = useState({})
+
     const [cost, setCost] = useState()
     const [user, setUser] = useState({})
-    const [slot, setSlot] = useState([])
-    const [dom1, setDom1] = useState([])
 
-    const [viewBed, setViewBed] = useState([]);
+    const [dom1, setDom1] = useState([])
+    const [account, setAccount] = useState([])
+
     const [typeRoom, setTypeRoom] = useState([])
     const [doms, setDoms] = useState([])
     const [roomId, setRoomId] = useState([])
@@ -30,10 +31,21 @@ const BookingBed = () => {
         }
 
     }
-    const onSubmit1 = data => {
-        setPage(true)
-    }
+    // const onSubmit1 = data => {
+    //     setPage(true)
+    //}
     const navigate = useNavigate()
+    useEffect(() => {
+        fetch('http://localhost:9999/account/' + id)
+            .then(resp => resp.json())
+            .then(data => {
+                setAccount(data);
+                console.log(data)
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    }, []);
 
     useEffect(() => {
         fetch('http://localhost:9999/user/' + id)
@@ -83,7 +95,7 @@ const BookingBed = () => {
             .then(resp => resp.json())
             .then(data => {
                 setDoms(data);
-                
+
             })
             .catch(err => {
                 console.log(err.message);
@@ -99,7 +111,7 @@ const BookingBed = () => {
     function updateBed(event) {
 
         //tra ve 1 index o select
-        const selectedIndex = event.target.selectedIndex-1;
+        const selectedIndex = event.target.selectedIndex - 1;
         //tra ve 1 mang dc chon
         const selectedOption = check[selectedIndex];
         const selectedBed = selectedOption.freeBed;
@@ -140,18 +152,64 @@ const BookingBed = () => {
 
     const updateUser = {
         id: user.id,
+
         name: user.name,
         email: user.email,
         phone: user.phone,
         address: user.address,
         gender: user.gender,
-        // StudentID: user.StudentID,
+        StudentID: user.StudentID,
         cost: (user.cost) - cost
 
     };
-
-
+    const updateAccount = {
+        id: account.id,
+        username:account.username,
+        password:account.password,
+        
+        role:"user",
+        status:account.status
+    };
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    const monthCheckout = month + 3; // Lưu ý: Tháng bắt đầu từ 0 (tháng 0 là tháng 1)
+    const year = currentDate.getFullYear();
+    const postResident = {
+        StudentID: user.StudentID,
+        Information: `${dom1.domID} - ${typeRoom}`,
+        CheckOut: `${day}-${monthCheckout}-${year}`,
+        Price: cost,
+        CheckIn: `${day}-${month}-${year}`
+    }
+    console.log("update", postResident)
+    console.log("hi", typeRoom)
+    console.log("hi1", dom1.domID)
+    console.log("hi2", updateAccount)
+    
     const booking = () => {
+        fetch(`http://localhost:9999/account/${id}`, {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updateAccount)
+        })
+            .then((res) => res.json())
+            .then((data) => {
+            })
+            .catch((err) => {
+                toast.error('Failed to edit: ' + err.message);
+            });
+        fetch(`http://localhost:9999/residentHistory`, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(postResident)
+        })
+            .then((res) => res.json())
+            .then((data) => {
+            })
+            .catch((err) => {
+                toast.error('Failed to edit: ' + err.message);
+            });
         fetch(`http://localhost:9999/user/${id}`, {
             method: "PUT",
             headers: { 'Content-Type': 'application/json' },
@@ -175,7 +233,7 @@ const BookingBed = () => {
                 toast.error('Failed to edit: ' + err.message);
             });
         toast.success('Success');
-        navigate("/paymentHistory")
+        navigate("/resident")
     }
 
 
@@ -230,7 +288,7 @@ const BookingBed = () => {
                             <p>{freeBed}</p>
                         </div>
                         <div className='w-96 col-6'>
-                            <form onSubmit={(onSubmit1)} >
+                            <form >
                                 <div className="grid grid-cols-2 gap-4">
                                     <Link to={"/listroom"} style={{
                                         background: "#ffffff",
@@ -287,15 +345,23 @@ const BookingBed = () => {
 
                     {!page && (
                         <div>
-                            {((user.cost - cost) >= 0 && freeBed !== 0) ? (
-                                <button className="btn btn-success" onClick={booking}>
-                                    booking
-                                </button>
+                            {account.role === "student" ? (
+                                (user.cost - cost >= 0 && freeBed !== 0) ? (
+                                    <button className="btn btn-success" onClick={booking}>
+                                        booking
+                                    </button>
+                                ) : (
+                                    <p style={{ color: "red" }}>
+                                        Sorry, you don't have enough money or empty slots
+                                    </p>
+                                )
                             ) : (
-                                <p style={{ color: "red" }}>
-                                    Sorry, you don't have enough money or empty slots
+                                <p style={{ color: "green" }}>
+                                    Sorry, you already have a room
                                 </p>
                             )}
+
+
                         </div>
                     )}
                 </div>}

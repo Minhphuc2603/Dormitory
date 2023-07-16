@@ -42,13 +42,13 @@
     },
     {
       "id": 5,
-      "StudentID": "HE163504",
       "name": "Le Minh Cuong",
       "email": "cuonglm@gmail.com",
       "phone": "0983717221",
       "address": "Nam Dinh",
       "gender": "female",
-      "cost": 1150000
+      "StudentID": "HE163504",
+      "cost": 300000
     },
     {
       "id": 6,
@@ -104,7 +104,7 @@
       "id": 5,
       "username": "cuonglm",
       "password": "123",
-      "role": "student",
+      "role": "user",
       "status": true
     },
     {
@@ -175,8 +175,8 @@
       "domID": "B",
       "slot": "slot4",
       "totalBed": 60,
-      "usedBed": 2,
-      "freeBed": 58,
+      "usedBed": 3,
+      "freeBed": 57,
       "id": 4
     }
   ],
@@ -260,6 +260,14 @@
       "Price": 1500000,
       "CheckIn": "15-7-2023",
       "id": 22
+    },
+    {
+      "StudentID": "HE163504",
+      "Information": "B - 4 beds",
+      "CheckOut": "15-10-2023",
+      "Price": 850000,
+      "CheckIn": "15-7-2023",
+      "id": 23
     }
   ]
 }

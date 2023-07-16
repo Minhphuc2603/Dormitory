@@ -175,6 +175,7 @@ const BookingBed = () => {
     const month = currentDate.getMonth() + 1;
     const monthCheckout = month + 3; // Lưu ý: Tháng bắt đầu từ 0 (tháng 0 là tháng 1)
     const year = currentDate.getFullYear();
+    console.log(currentDate)
     const postResident = {
         StudentID: user.StudentID,
         Information: `${dom1.domID} - ${typeRoom}`,

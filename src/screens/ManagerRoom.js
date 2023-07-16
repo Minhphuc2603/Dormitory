@@ -1,37 +1,30 @@
 import { useEffect, useState } from "react";
+
+import { Col, Row, Table,} from 'react-bootstrap';
+import { Pagination } from "antd"
 import TemplateAdmin from "../template/TemplateAdmin";
-import { Col, Row, Table, Modal, Pagination } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const ManagerRoom = () => {
-    const [room, setRoom] = useState([])
-    const [dom, setDom] = useState([])
+
+    const [bed, setBed] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage] = useState(5);
 
-    useEffect(() => {
-        fetch('http://localhost:9999/room')
-            .then(resp => resp.json())
-            .then(data => {
-                setRoom(data);
-                console.log(data)
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
-    }, []);
+
     // Tính toán số trang
-    const totalPages = Math.ceil(room.length / usersPerPage);
+    const totalPages = Math.ceil(bed.length / usersPerPage);
 
     // Lấy index bắt đầu và kết thúc của list user hiện tại
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentRoom = room.slice(indexOfFirstUser, indexOfLastUser);
+    const currentBed = bed.slice(indexOfFirstUser, indexOfLastUser);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
     useEffect(() => {
-        fetch('http://localhost:9999/dom')
+        fetch('http://localhost:9999/doms')
             .then(resp => resp.json())
             .then(data => {
-                setDom(data);
+                setBed(data);
                 console.log(data)
             })
             .catch(err => {
@@ -45,14 +38,10 @@ const ManagerRoom = () => {
                 <Col xs={12}>
                     <Row>
                         <Col style={{ textAlign: 'center' }}>
-                            <h2>List Room</h2>
+                            <h2>Manager Room</h2>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col style={{ textAlign: 'right' }}>
-                            <Link to={'/addroom'}>Create new Room</Link>
-                        </Col>
-                    </Row>
+
 
                     <Row>
                         <Col>
@@ -60,72 +49,59 @@ const ManagerRoom = () => {
                                 <thead>
                                     <tr>
 
-                                        <th>Name</th>
-                                        <th>NameRoom</th>
-                                        <th>numberBed</th>
-                                        <th>Price(VND)</th>
+                                        <th>Dom Name</th>
+                                        <th>Dom ID</th>
+                                        <th>Total Bed</th>
+                                        <th>Used Bed</th>
+                                        <th>Free Bed</th>
+                                        <th>Action</th>
 
 
-                                        <th colSpan={2}>Action</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
-                                        currentRoom.map(r => (
-                                            <tr key={r.id}>
+                                        currentBed.map(b => (
+                                            <tr key={b.id}>
 
-                                                <td>{
-                                                    dom.map(d => d.domId === r.roomId ? d.domName : '')
-                                                }</td>
-                                                <td>{r.nameRoom}</td>
-                                                <td>{r.numberBed}</td>
-
-
-                                                <td>
-                                                    {r.price}
-                                                </td>
-                                                <td>
-                                                    {
-                                                        <Link to={'/edit/room/' + r.id}>Edit</Link>
-                                                    }
-                                                    
-                                                    {
-                                                        <Link to={'/'} >Delete</Link>
-
-                                                    }
-
-                                                </td>
-
+                                                <td>{b.domName}</td>
+                                                <td>{b.domID}&ensp;-&ensp;{b.slot}</td>
+                                                <td>{b.totalBed}</td>
+                                                <td>{b.usedBed}</td>
+                                                <td>{b.freeBed}</td>
+                                                <td><Link>Edit</Link></td>
                                             </tr>
-
                                         ))
                                     }
+                                    <tr>
+                                        <td colSpan="2">Total</td>
+                                        <td>
+                                            {
+                                                currentBed.reduce((total, b) => total + b.totalBed, 0)
+                                            }
+                                        </td>
+                                        <td>
+                                            {
+                                                currentBed.reduce((total, b) => total + b.usedBed, 0)
+                                            }
+                                        </td>
+                                        <td>
+                                            {
+                                                currentBed.reduce((total, b) => total + b.freeBed, 0)
+                                            }
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </Table>
-                            <Pagination style={{ justifyContent: "flex-end" }}>
-                                <Pagination.First onClick={() => setCurrentPage(1)} disabled={currentPage === 1} />
-                                <Pagination.Prev
-                                    onClick={() => setCurrentPage(currentPage - 1)}
-                                    disabled={currentPage === 1}
-                                />
-                                {Array.from({ length: totalPages }, (_, index) => (
-                                    <Pagination.Item
-                                        key={index + 1}
-                                        active={index + 1 === currentPage}
-                                        onClick={() => setCurrentPage(index + 1)}
-                                    >
-                                        {index + 1}
-                                    </Pagination.Item>
-                                ))}
-                                <Pagination.Next
-                                    onClick={() => setCurrentPage(currentPage + 1)}
-                                    disabled={currentPage === totalPages}
-                                />
-                                <Pagination.Last
-                                    onClick={() => setCurrentPage(totalPages)}
-                                    disabled={currentPage === totalPages}
-                                />
-                            </Pagination>
+                            <Pagination
+                                current={currentPage}
+                                total={bed.length}
+                                pageSize={usersPerPage}
+                                onChange={paginate}
+
+                                style={{ marginTop: "16px", textAlign: "center" }}
+                            />
                         </Col>
                     </Row>
                 </Col>

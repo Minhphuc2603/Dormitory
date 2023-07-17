@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Col, Row, Table,} from 'react-bootstrap';
 import { Pagination } from "antd"
 import TemplateAdmin from "../template/TemplateAdmin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ManagerRoom = () => {
 
@@ -13,13 +13,22 @@ const ManagerRoom = () => {
 
 
     // Tính toán số trang
-    const totalPages = Math.ceil(bed.length / usersPerPage);
+    
 
     // Lấy index bắt đầu và kết thúc của list user hiện tại
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentBed = bed.slice(indexOfFirstUser, indexOfLastUser);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    
+    const navigate = useNavigate()
+    useEffect(() => {
+      const role = sessionStorage.getItem('userrole');
+      const id = sessionStorage.getItem('id');
+      if (role !== "admin" || id === null) {
+        navigate("/error");
+      }
+    }, []);
     useEffect(() => {
         fetch('http://localhost:9999/doms')
             .then(resp => resp.json())
@@ -70,12 +79,12 @@ const ManagerRoom = () => {
                                                 <td>{b.totalBed}</td>
                                                 <td>{b.usedBed}</td>
                                                 <td>{b.freeBed}</td>
-                                                <td><Link>Edit</Link></td>
+                                                <td><Link to={'/edit/room/'+b.id}>Edit</Link></td>
                                             </tr>
                                         ))
                                     }
                                     <tr>
-                                        <td colSpan="2">Total</td>
+                                        {/* <td colSpan="2">Total</td>
                                         <td>
                                             {
                                                 currentBed.reduce((total, b) => total + b.totalBed, 0)
@@ -90,7 +99,7 @@ const ManagerRoom = () => {
                                             {
                                                 currentBed.reduce((total, b) => total + b.freeBed, 0)
                                             }
-                                        </td>
+                                        </td> */}
                                     </tr>
                                 </tbody>
                             </Table>

@@ -2,12 +2,21 @@ import { useEffect, useState } from "react";
 import TemplateAdmin from "../template/TemplateAdmin";
 import { Col, Row, Table, Button } from 'react-bootstrap';
 import {Pagination} from 'antd'
+import { useNavigate } from "react-router-dom";
 
 const ManagerAccount = () => {
     const [account, setAccount] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage] = useState(5);
+    const navigate = useNavigate()
+    useEffect(() => {
+      const role = sessionStorage.getItem('userrole');
+      const id = sessionStorage.getItem('id');
+      if (role !== "admin" || id === null) {
+        navigate("/error");
+      }
+    }, []);
 
     useEffect(() => {
         fetch('http://localhost:9999/account')

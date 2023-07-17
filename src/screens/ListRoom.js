@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Col, Row, Table,} from 'react-bootstrap';
 import { Pagination } from "antd"
 import TemplateUser from "../template/TemplateUser";
+import { useNavigate } from "react-router-dom";
 
 const ListRoom = () => {
 
@@ -13,6 +14,14 @@ const ListRoom = () => {
 
     // Tính toán số trang
     const totalPages = Math.ceil(bed.length / usersPerPage);
+    const navigate = useNavigate()
+    useEffect(() => {
+      const role = sessionStorage.getItem('userrole');
+      const id = sessionStorage.getItem('id');
+      if (role == "admin" || id === null) {
+        navigate("/error");
+      }
+    }, []);
 
     // Lấy index bắt đầu và kết thúc của list user hiện tại
     const indexOfLastUser = currentPage * usersPerPage;

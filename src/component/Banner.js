@@ -11,20 +11,18 @@ export default function Banner() {
       <div className="slide-container">
         <Fade>
           <div className="each-fade">
-            <img src="https://ocd.fpt.edu.vn/Content/images/landing/bg1.jpg" />
+            <img src="img/bg1.png" />
           </div>
           <div className="each-fade">
-            <img src="https://ocd.fpt.edu.vn/Content/images/landing/bg2.jpg" />
+            <img src="img/bg2.jpg" />
           </div>
           <div className="each-fade">
-            <img src="https://ocd.fpt.edu.vn/Content/images/landing/bg3.jpg" />
+            <img src="img/bg3.jpg" />
           </div>
           <div className="each-fade">
-            <img src="https://ocd.fpt.edu.vn/Content/images/landing/bg4.jpg" />
+            <img src="img/bg4.jpg" />
           </div>
-          <div className="each-fade">
-            <img src="https://ocd.fpt.edu.vn/Content/images/landing/bg5.jpg" />
-          </div>
+          
         </Fade>
       </div>
       

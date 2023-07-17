@@ -60,6 +60,9 @@ export default function ProfileUser() {
                                                 <p className="text-muted font-size-sm">
                                                     {users.StudentID}
                                                 </p>
+                                                <p className="text-muted font-size-sm">
+                                                   Total amout: {users.cost} VND
+                                                </p>
 
                                             </div>
                                         </div>
@@ -161,6 +164,9 @@ export default function ProfileUser() {
                                                 <p className="text-secondary mb-1">FPT University</p>
                                                 <p className="text-muted font-size-sm">
                                                 {users.StudentID}
+                                                </p>
+                                                <p className="text-muted font-size-sm">
+                                                   Total amout: {users.cost} VND
                                                 </p>
 
                                             </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Col, Row, Table, } from 'react-bootstrap';
 import { Pagination, Modal } from "antd"
@@ -17,6 +17,14 @@ const ManagerResident = () => {
     const [usersPerPage] = useState(5);
     const [user, setUser] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate()
+    useEffect(() => {
+      const role = sessionStorage.getItem('userrole');
+      const id = sessionStorage.getItem('id');
+      if (role !== "admin" || id === null) {
+        navigate("/error");
+      }
+    }, []);
 
     useEffect(() => {
         fetch(`http://localhost:9999/user/`)

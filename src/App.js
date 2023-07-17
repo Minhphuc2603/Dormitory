@@ -18,6 +18,9 @@ import BookingBed from './screens/BookingBed';
 import Error from './screens/Error';
 import ResidentHistory from './screens/ResidentHistory';
 import ManagerResident from './screens/ManagerResident';
+import ViewNoti from './screens/ViewNoti';
+import AddNoti from './screens/AddNoti';
+import EditNoti from './screens/EditNoti';
 
 
 
@@ -45,6 +48,9 @@ function App() {
      <Route path='/*' element={<Error/>}/>
      <Route path='/resident' element={<ResidentHistory/>}/>
      <Route path='/manager/resident' element={<ManagerResident/>}/>
+     <Route path='/viewnoti' element={<ViewNoti/>}/>
+     <Route path='/add/noti' element={<AddNoti/>}/>
+     <Route path='/edit/noti/:id' element={<EditNoti/>}/>
      
 
 

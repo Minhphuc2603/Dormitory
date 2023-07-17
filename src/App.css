@@ -67,7 +67,7 @@ nav li {
 
 .lading-intro {
   position: relative;
-  background-image: url(https://ocd.fpt.edu.vn/Content/images/landing/content.jpg);
+  background-image: url(content.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px;
@@ -135,23 +135,10 @@ nav li {
   padding-bottom: 0;
   background-color: #fff;  
 }
-.layout1{
-  margin-left: 10%;
-  margin-right: 10%;
-  
-}
-.layout2{
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-.text2{
-  margin-left: 2%;
-}
-.text3{
-  margin-left: 10%;
-  margin-right: 10%;
-}
+
+
+
+
 .footer{
   padding: 10px 10px ;
   margin: 10px 20px;
@@ -309,3 +296,10 @@ button:hover {
   height:auto;
   display:inline-block;
 }
+/* CSS */
+
+
+
+
+
+

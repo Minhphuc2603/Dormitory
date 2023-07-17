@@ -74,6 +74,7 @@ function SideBarUser() {
                                     <h6 className="collapse-header">View</h6>
                                                                      
                                     <Link className="collapse-item" to={`/listroom`}>List Room</Link>
+                                    <Link className="collapse-item" to={`/viewnoti`}>New </Link>
                                     
                                 </div>
                             </div>

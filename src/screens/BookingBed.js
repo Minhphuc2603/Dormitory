@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 const BookingBed = () => {
     const id = sessionStorage.getItem('id')
     console.log(id)
+    
 
 
     const [page, setPage] = useState(true)
@@ -25,12 +26,21 @@ const BookingBed = () => {
     const [check, setCheck] = useState([])
     const [freeBed, setFreeBed] = useState([])
     const [domID, setdomID] = useState([])
+    sessionStorage.setItem('DomID' , domID)
     const next = () => {
         if (cost) {
             setPage(false)
         }
 
     }
+    useEffect(() => {
+      const role = sessionStorage.getItem('userrole');
+      const id = sessionStorage.getItem('id');
+      if (role == "admin" || id === null) {
+        navigate("/error");
+      }
+    }, []);
+    
     // const onSubmit1 = data => {
     //     setPage(true)
     //}
@@ -276,7 +286,7 @@ const BookingBed = () => {
 
                 :
                 <div className="">
-                    <h1>BookingBeds2</h1>
+                    <h1>Detail Booking</h1>
                     <div className="flex  gap-4 grid-cols-2 justify-around flex-wrap row">
                         <div className='w-96 p-8 gap-1 grid col-6'>
                             <h4>Your Account Balance</h4>
@@ -316,26 +326,7 @@ const BookingBed = () => {
                                     </select>
 
 
-                                    {/* <div>Dom<Select
-                                        // defaultValue="lucy"
-                                        style={{
-                                            width: "100%",
-                                        }}
-                                        // defaultValue={"DomA"}
-                                        onChange={dom}
-                                        options={[
-                                            {
-                                                label: 'Dom',
-                                                options:
-                                                    ["DomA", "DomB"].map((item, index) => (
-                                                        {
-                                                            label: `${item}`,
-                                                            value: item,
-                                                            key: index
-                                                        })),
-                                            },
-                                        ]}
-                                    /></div> */}
+                                   
 
 
 

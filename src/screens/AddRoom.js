@@ -11,7 +11,7 @@ const AddRoom = () => {
     const [numberBed, setNumberBed] = useState("");
     const [roomId, setRomId] = useState("1");
     const [dom, setDom] = useState([]);
-    const [room,setRoom] = useState([])
+
     const IsValidate = () => {
         let isproceed = true;
         

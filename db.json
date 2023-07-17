@@ -32,13 +32,13 @@
     },
     {
       "id": 4,
-      "name": "Nguyen Luong DUy",
+      "name": "Nguyen Luong Duy",
       "email": "phuctm@gmail.com",
       "phone": "0946488234",
       "address": "Ha Noi",
       "gender": "female",
       "StudentID": "HE163503",
-      "cost": 9000000
+      "cost": 3250000
     },
     {
       "id": 5,
@@ -62,13 +62,13 @@
     },
     {
       "id": 7,
-      "name": "Trinh Van Phuc",
-      "email": "phucne@gmail.com",
-      "phone": "0946488237",
+      "name": "Trinh Minh Phuc",
+      "email": "phuctmhe163506@fpt.edu.vn",
+      "phone": "0946488234",
       "address": "Ha Noi",
       "gender": "male",
       "StudentID": "HE163506",
-      "cost": 300000
+      "cost": 299150000
     }
   ],
   "account": [
@@ -109,16 +109,15 @@
     },
     {
       "id": 6,
-      "username": "tunt",
-      "password": "123",
-      "role": "student",
-      "status": false
+      "content": "123",
+      "title": "1234",
+      "date": ""
     },
     {
       "id": 7,
       "username": "phuctm1",
       "password": "123",
-      "role": "student",
+      "role": "user",
       "status": true
     }
   ],
@@ -144,72 +143,66 @@
   ],
   "doms": [
     {
-      "domName": "DomA",
+      "id": 1,
       "domID": "A",
+      "domName": "DomA",
       "slot": "slot3",
-      "totalBed": 150,
-      "usedBed": 37,
-      "freeBed": 113,
-      "id": 1
+      "totalBed": 132,
+      "usedBed": 12,
+      "freeBed": 120
     },
     {
-      "domName": "DomB",
+      "id": 2,
       "domID": "B",
+      "domName": "DomB",
       "slot": "slot3",
-      "totalBed": 150,
-      "usedBed": 150,
-      "freeBed": 0,
-      "id": 2
+      "totalBed": 100,
+      "usedBed": 50,
+      "freeBed": 50
     },
     {
       "domName": "DomA",
       "domID": "A",
       "slot": "slot4",
       "totalBed": 50,
-      "usedBed": 36,
-      "freeBed": 14,
+      "usedBed": 39,
+      "freeBed": 11,
       "id": 3
     },
     {
-      "domName": "DomB",
+      "id": 4,
       "domID": "B",
+      "domName": "DomB",
       "slot": "slot4",
-      "totalBed": 60,
-      "usedBed": 3,
-      "freeBed": 57,
-      "id": 4
+      "totalBed": 64,
+      "usedBed": 6,
+      "freeBed": 58
     }
   ],
   "notification": [
     {
-      "id": "1",
-      "title": "Minh Phuc",
-      "Document": "Dom sẽ mất điện vào ngày kia "
+      "id": 1,
+      "title": "Thông báo cắt điện ",
+      "content": "Dom sẽ mất điện vào ngày kia ",
+      "Date": "12-04-2023"
     },
     {
-      "id": "2",
-      "title": "Minh Phuc",
-      "Document": "Dom sẽ mất nước vào ngày mai "
+      "id": 2,
+      "title": "Thông báo cắt nước ",
+      "content": "Thực hiện theo chỉ đạo của Nhà trường và kế hoạchvệsinhđịnh kỳbểchứanước hàng năm tại KTX, Phòng HCTH gửi thông báo đến các bạnSinhviên về lịch cắt nước vệ sinh, thau rửa bể chứa năm 2023 cụ thể như sau:Thời gian dự kiến:Từngày 06/7 đến hết ngày 07/7/2023",
+      "Date": "16-04-2023"
     },
     {
-      "id": "3",
-      "title": "Minh Phuc",
-      "Document": "Dom A bị bẩn"
+      "id": 3,
+      "title": "THÔNG BÁO V/V THAY ĐỔI THỜI GIAN ĐĂNG KÝ MỚI PHÒNG KTX ",
+      "content": "KTX gia hạn lịch cho sinh viên giữ giường cũ đến trước 12h00 ngày 20/4/2023.Với các bạn diện đăng ký mới, chuyển phòng hệ thống OCD sẽ mở cổng đăng ký tiếp nhận đặt phòng từ sau 12h00 ngày 20/4/2023.Sau khi kết thúc thời hạn giữ chỗ , các bạn kiểm tra thông tin phòng trống để thực hiện đặt phòng phù hợp nhé!",
+      "Date": "12-07-2023"
     },
     {
-      "id": "4",
-      "title": "Minh Phuc",
-      "Document": "Học sinh nghỉ hè "
-    },
-    {
-      "id": "5",
-      "title": "Minh Phuc",
-      "Document": "Không được Trèo Dom "
-    },
-    {
-      "id": "6",
-      "title": "Minh Phuc",
-      "Document": "Ăn trộm ở dom B "
+      "id": 4,
+      "title": "Thông báo về kế hoạch tiếp nhận đăng ký KTX cơ sở Hòa Lạc từ kỳ Fall 2023",
+      "content": "Thực hiện theo chỉ đạo của Nhà trường về kế hoạch tiếp nhận đăng ký KTX kỳ Fall 2023, Phòng Hành chính tổng hợp KTX xin thông tin tới bạn nội dung cụ thể như sau:I. Đối tượng ưu tiên đăng ký KTX- Sinh viên học tập tại cơ sở Hòa Lạc trong học kỳ 1- 5.- Các đối tượng sinh viên khuyết tật hay đặc biệt khác, tùy trường hợp cụ thể Nhà trường sẽ xem xét giải quyết đơn.",
+      "Date": "15-07-2023"
     }
   ],
   "residentHistory": [
@@ -268,6 +261,62 @@
       "Price": 850000,
       "CheckIn": "15-7-2023",
       "id": 23
+    },
+    {
+      "StudentID": "HE163503",
+      "Information": "A - 4 beds",
+      "CheckOut": "16-10-2023",
+      "Price": 850000,
+      "CheckIn": "16-7-2023",
+      "id": 24
+    },
+    {
+      "StudentID": "HE163503",
+      "Information": "A - 3 beds",
+      "CheckOut": "16-10-2023",
+      "Price": 1500000,
+      "CheckIn": "16-7-2023",
+      "id": 25
+    },
+    {
+      "StudentID": "HE163503",
+      "Information": "A - 4 beds",
+      "CheckOut": "16-10-2023",
+      "Price": 850000,
+      "CheckIn": "16-7-2023",
+      "id": 26
+    },
+    {
+      "StudentID": "HE163503",
+      "Information": "A - 4 beds",
+      "CheckOut": "16-10-2023",
+      "Price": 850000,
+      "CheckIn": "16-7-2023",
+      "id": 27
+    },
+    {
+      "StudentID": "HE163506",
+      "Information": "B - 4 beds",
+      "CheckOut": "16-10-2023",
+      "Price": 850000,
+      "CheckIn": "16-7-2023",
+      "id": 28
+    },
+    {
+      "StudentID": "HE163503",
+      "Information": "A - 4 beds",
+      "CheckOut": "16-10-2023",
+      "Price": 850000,
+      "CheckIn": "16-7-2023",
+      "id": 29
+    },
+    {
+      "StudentID": "HE163503",
+      "Information": "A - 4 beds",
+      "CheckOut": "17-10-2023",
+      "Price": 850000,
+      "CheckIn": "17-7-2023",
+      "id": 30
     }
   ]
 }

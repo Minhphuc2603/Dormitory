@@ -5,25 +5,13 @@ import { Container } from "react-bootstrap";
 
 
 export default function Home() {
-    
+
     return (
         <TemplateHome>
-          
+            
+
             <div className="container mp">
-                <div className="row">
-                    <div className="col-sm list1">
-                        <h4>Thông tin KTX Đại Học FPT</h4>
-                        <h6>Thông tin</h6>
-                    </div>
-                    <div className="col-sm list1">
-                        <h4>Đăng kí sử dụng KTX</h4>
-                        <h6>Đăng kí</h6>
-                    </div>
-                    <div className="col-sm list1">
-                        <h4>Các câu hỏi thường gặp</h4>
-                        <h6>FAQ</h6>
-                    </div>
-                </div>
+
                 <section id="infoKTX" className="info-KTX">
                     <div className="relative">
                         <div className="flex justify-center">
@@ -31,7 +19,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className=" row layout1">
+                    <div className=" row layout">
                         <div className="text1 col-6">
                             <p style={{ lineHeight: "1.8" }}>
                                 Trường Đại học FPT là một trong những ngôi trường nổi tiếng đào tạo đa
@@ -56,38 +44,40 @@ export default function Home() {
                             />
                         </div>
                     </div>
-                    <div className="row layout1">
-                        <div className="layout-img col-8">
+                    <div className="row layout">
+                        <div className="col-8">
                             <img
                                 className="landing-info-img-2"
                                 src="https://ocd.fpt.edu.vn/Content/images/landing/content2.png"
                                 alt="img-2"
                             />
                         </div>
-                        <div className="text2 col-4">
-
-                            <div style={{ lineHeight: "1.8" }}>
+                        <div className="col-4">
+                            <div className="content">
                                 <p style={{ fontWeight: "bold", color: "#F36F21" }}>
                                     Ký túc xá của trường Đại học FPT là chỗ ở dành riêng cho sinh viên
                                     của Đại học FPT.
                                 </p>
-                                Hiện nay, một vấn đề các bạn tân sinh viên sau khi biết kết quả trúng
-                                tuyển Đại học. Đó là tìm kiếm cho mình một chỗ ở phù hợp, vừa tiết kiệm
-                                vừa đảm bảo an ninh, môi trường học tập. Không chỉ các tân sinh viên mà
-                                các bạn sinh viên các khóa trước hầu hết cũng đều mong muốn ở tại{" "}
-                                <b style={{ color: "#F36F21" }}>KTX</b> trường để thuận lợi cho việc di
-                                chuyển. Và để tiết kiệm chi phí, có một trường trường để học tập và sinh
-                                hoạt.
+                                <p>
+                                    Hiện nay, một vấn đề các bạn tân sinh viên sau khi biết kết quả trúng
+                                    tuyển Đại học. Đó là tìm kiếm cho mình một chỗ ở phù hợp, vừa tiết kiệm
+                                    vừa đảm bảo an ninh, môi trường học tập. Không chỉ các tân sinh viên mà
+                                    các bạn sinh viên các khóa trước hầu hết cũng đều mong muốn ở tại{" "}
+                                    <b style={{ color: "#F36F21" }}>KTX</b> trường để thuận lợi cho việc di
+                                    chuyển. Và để tiết kiệm chi phí, có một trường trường để học tập và sinh
+                                    hoạt.
+                                </p>
                             </div>
                         </div>
                     </div>
+
                     <div>
                         <img
-                            className="row layout2"
+                            className="row layout"
                             src="https://ocd.fpt.edu.vn/Content/images/landing/content3.png"
                             alt="img-3"
                         />
-                        <div className="text3" style={{ marginTop: 24, lineHeight: "1.8", textAlign: "justify" }}>
+                        <div className="text" style={{ marginTop: 24, lineHeight: "1.8", textAlign: "justify" }}>
                             <p style={{ fontWeight: "bold", color: "#F36F21", marginBottom: 8 }}>
                                 Ký túc xá trường Đại học FPT được xây dựng với thiết kế hiện đại, thoáng
                                 mát và đầy đủ tiện nghi.

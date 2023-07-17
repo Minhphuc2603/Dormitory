@@ -6,64 +6,60 @@ import { toast } from "react-toastify";
 const EditRoom = () => {
     const { id } = useParams();
 
-    const [nameRoom, setNameRoom] = useState("");
-    const [numberBed, setNumberBed] = useState("");
-    const [roomId,setRomId] = useState("");
-    const [price,setPrice] = useState("")
-    const[dom,setDom]=useState([]);
+    const [dom, setDom] = useState({
+        domID: "",
+        domName: "",
+        slot:"",
+        totalBed: 0,
+        usedBed: 0,
+        freeBed: 0,
+    });
 
     useEffect(() => {
-        fetch(`http://localhost:9999/room/${id}`)
+        fetch(`http://localhost:9999/doms/${id}`)
             .then((resp) => resp.json())
             .then((data) => {
-                setNameRoom(data.nameRoom || "");
-                setNumberBed(data.numberBed || "");
-                setRomId(data.roomId || "")
-                setPrice(data.price || "")
+                setDom(data);
+                console.log(data);
+            })
+            .catch((err) => {
+                console.log(err.message);
             });
     }, [id]);
-    useEffect(() => {
-        fetch('http://localhost:9999/dom')
-            .then(resp => resp.json())
-            .then(data => {
-                setDom(data);
-                console.log(data)
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
-    }, []);
 
     const navigate = useNavigate();
-    const IsValidate = () => {
-        let isproceed = true;
-        
-        if (nameRoom === null || nameRoom.trim() === "") {
-          isproceed = false;
-          toast.warning('Please enter the value in name Room');
-        }
-        if (numberBed <= 0 || numberBed.trim() === "") {
-            isproceed = false;
-            toast.warning('Please enter the value in number Bed');
-          }
-     
-        return isproceed;
-    }
 
+    const isValidate = () => {
+        let isProceed = true;
+
+        if (dom.usedBed <=0 ) {
+            isProceed = false;
+            toast.warning("Please enter the value in used Bed");
+        }
+
+        if (dom.freeBed <= 0) {
+            isProceed = false;
+            toast.warning("Please enter the value in free Bed");
+        }
+
+        return isProceed;
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (IsValidate()){
+        if (isValidate()) {
             const updatedRoom = {
-                id,
-                roomId,
-                nameRoom,
-                numberBed,
-                price,
+                id: id,
+                domID: dom.domID,
+                domName: dom.domName,
+                slot:dom.slot,
+                totalBed: parseInt(dom.usedBed) + parseInt(dom.freeBed),
+                usedBed: parseInt(dom.usedBed),
+                freeBed: parseInt(dom.freeBed),
             };
 
-            fetch(`http://localhost:9999/room/${id}`, {
+            fetch(`http://localhost:9999/doms/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedRoom),
@@ -87,7 +83,6 @@ const EditRoom = () => {
                 <Col style={{ textAlign: "center" }}>
                     <h3>Edit Room</h3>
                 </Col>
-                
             </Row>
             <Row>
                 <Col md={12}>
@@ -97,51 +92,54 @@ const EditRoom = () => {
                                 <Form.Text>
                                     Name <span style={{ color: "red" }}>*</span>
                                 </Form.Text>
-                                <Form.Control
-                                    value={dom.find(d => d.domId === roomId)?.domName || ''}
-                                    onChange={(e) => setNameRoom(e.target.value)}
-                                    disabled
-                                />{nameRoom.trim() === "" && (
-                                    <Form.Text>
-                                        <span style={{ color: "red" }}>
-                                            Please enter a valid name
-                                        </span>
-                                    </Form.Text>
-                                )}
-                                
-                            
+                                <Form.Control value={dom.domName} disabled />
                             </Form.Group>
                         </Row>
                         <Row>
                             <Form.Group className="col-md-12">
                                 <Form.Text>
-                                    NameRoom <span style={{ color: "red" }}>*</span>
+                                    DomID <span style={{ color: "red" }}>*</span>
                                 </Form.Text>
-                                <Form.Control
-                                    value={nameRoom}
-                                    onChange={(e) => setNameRoom(e.target.value)}
+                                <Form.Control value={dom.domID} disabled />
+                            </Form.Group>
+                        </Row>
+                        <Row>
+                            <Form.Group className="col-md-12">
+                                <Form.Text>UsedBed</Form.Text>
+                                <input
+                                    value={dom.usedBed}
+                                    onChange={(e) =>
+                                        setDom({ ...dom, usedBed: e.target.value })
+                                    }
                                 />
-                                {nameRoom.trim() === "" && (
-                                    <Form.Text>
-                                        <span style={{ color: "red" }}>
-                                            Please enter a valid name
-                                        </span>
+                                {dom.usedBed <= 0 && (
+                                    <Form.Text style={{ color: "red" }}>
+                                        Please enter usedBed &gt; 0
                                     </Form.Text>
                                 )}
                             </Form.Group>
                         </Row>
                         <Row>
                             <Form.Group className="col-md-12">
-                                <Form.Text>numberBed</Form.Text>
+                                <Form.Text>FreeBed</Form.Text>
                                 <Form.Control
-                                    value={numberBed}
-                                    onChange={(e) => setNumberBed(e.target.value)}
+                                    value={dom.freeBed}
+                                    onChange={(e) =>
+                                        setDom({ ...dom, freeBed: e.target.value })
+                                    }
                                 />
-                                {numberBed <= 0 && <Form.Text style={{ color: 'red' }}>Please enter number Bed &gt; 0</Form.Text>}
+                                {dom.freeBed <= 0 && (
+                                    <Form.Text style={{ color: "red" }}>
+                                        Please enter freeBed &gt; 0
+                                    </Form.Text>
+                                )}
                             </Form.Group>
                         </Row>
                         <Row>
-                            <Col className="col-md-12" style={{ textAlign: "center", padding: "25px" }}>
+                            <Col
+                                className="col-md-12"
+                                style={{ textAlign: "center", padding: "25px" }}
+                            >
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <Button className="btn btn-success" type="submit">
                                     Save

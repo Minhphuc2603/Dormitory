@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TemplateAdmin from "../template/TemplateAdmin";
 import { Col, Row, Table, } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Pagination } from "antd";
 
 const ManagerUser = () => {
@@ -10,6 +10,14 @@ const ManagerUser = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage] = useState(5);
+    const navigate = useNavigate()
+    useEffect(() => {
+      const role = sessionStorage.getItem('userrole');
+      const id = sessionStorage.getItem('id');
+      if (role !== "admin" || id === null) {
+        navigate("/error");
+      }
+    }, []);
     useEffect(() => {
         fetch('http://localhost:9999/user')
             .then(resp => resp.json())

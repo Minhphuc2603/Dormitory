@@ -80,7 +80,7 @@ const ManagerAccount = () => {
                 <Col xs={12}>
                     <Row>
                         <Col style={{ textAlign: 'center' }}>
-                            <h2>List user</h2>
+                            <h2>List account</h2>
                         </Col>
                     </Row>
 

@@ -124,6 +124,13 @@ function SideBarUser() {
                                 <span>Resident </span>
                                 </Link>
                         </li>
+                        <hr className="sidebar-divider d-none d-md-block" />
+                        <li className="nav-item active">
+                            <Link className="nav-link" to={'/payment'} >
+                            
+                                <span>Payment </span>
+                                </Link>
+                        </li>
                     </ul>
                     
                     

@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { SHA256 } from "crypto-js";
+
+
+
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     const id = sessionStorage.getItem('id');
@@ -16,6 +22,7 @@ const Login = () => {
 
   const proceedLogin = (e) => {
     e.preventDefault();
+    
     if (validate()) {
       fetch('http://localhost:9999/account')
         .then((res) => {
@@ -27,11 +34,13 @@ const Login = () => {
         })
         .then((data) => {
           const foundUser = data.find(
-            (user) => user.username === username && user.password === password && user.status === true
+            (user) =>
+              user.username === username &&
+              user.password === SHA256(password).toString() && // Mã hoá mật khẩu nhập vào
+              user.status === true
           );
           if (foundUser) {
-            console.log('id:', foundUser.id);
-            console.log('Role:', foundUser.role);
+           
             sessionStorage.setItem('id', foundUser.id);
             sessionStorage.setItem('userrole', foundUser.role);
             navigate('/');

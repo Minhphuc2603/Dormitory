@@ -113,8 +113,9 @@ const ResidentHistory = () => {
         fetch(`http://localhost:9999/residentHistory?StudentID=${user[0]}`)
             .then(resp => resp.json())
             .then(data => {
-                setResident(data);
-                console.log(data);
+                
+                const sortedResi = data.sort((a, b) => b.id - a.id);
+                setResident(sortedResi);
             })
             .catch(err => {
                 console.log(err.message);

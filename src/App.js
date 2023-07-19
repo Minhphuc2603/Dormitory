@@ -21,6 +21,9 @@ import ManagerResident from './screens/ManagerResident';
 import ViewNoti from './screens/ViewNoti';
 import AddNoti from './screens/AddNoti';
 import EditNoti from './screens/EditNoti';
+import Payment from './screens/Payment';
+import ManagerPayment from './screens/ManagerPayment';
+import PaymentHistory from './screens/PaymentHistory';
 
 
 
@@ -51,6 +54,9 @@ function App() {
      <Route path='/viewnoti' element={<ViewNoti/>}/>
      <Route path='/add/noti' element={<AddNoti/>}/>
      <Route path='/edit/noti/:id' element={<EditNoti/>}/>
+     <Route path='/payment' element={<Payment/>}/>
+     <Route path='/paymenthistory' element={<PaymentHistory/>}/>
+     <Route path='/managerpayment' element={<ManagerPayment/>}/>
      
 
 

@@ -1,6 +1,6 @@
 
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import TemplateUser from "../template/TemplateUser";
 import TemplateAdmin from "../template/TemplateAdmin";
 
@@ -14,6 +14,15 @@ export default function ProfileUser() {
     const role = sessionStorage.getItem('userrole')
 
     const { id } = useParams()
+    const navigate =  useNavigate();
+    const [currentUserID] = useState(sessionStorage.getItem('id'))
+    useEffect(() => {
+        // ID của người dùng hiện tại (thay đổi giá trị này cho phù hợp)
+
+        if (id !== String(currentUserID)) {
+            navigate("/error"); // Chuyển hướng đến trang lỗi nếu ID không hợp lệ
+        }
+    }, [id]);
     useEffect(() => {
         fetch("http://localhost:9999/user/" + id)
             .then((resp) => resp.json())

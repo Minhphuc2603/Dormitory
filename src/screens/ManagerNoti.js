@@ -9,7 +9,8 @@ const ManagerNoti = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage] = useState(5);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     useEffect(() => {
       const role = sessionStorage.getItem('userrole');
       const id = sessionStorage.getItem('id');
@@ -24,22 +25,22 @@ const ManagerNoti = () => {
             .then(data => setNoti(data))
             .catch(error => console.log(error.message));
     }, []);
+
     const handleDelete = (id) => {
-        if (window.confirm("Do you wanna remove")) {
+        if (window.confirm("Do you want to remove?")) {
             fetch(`http://localhost:9999/notification/${id}`, {
                 method: "DELETE"
             })
                 .then(() => {
-                    //reload lai trang 
+                    // Reload the page
                     alert("Delete success.");
                     window.location.reload();
                 })
                 .catch(err => {
                     console.log(err.message);
-                })
+                });
         }
     }
-
 
     const totalPages = Math.ceil(noti.length / usersPerPage);
 
@@ -71,7 +72,7 @@ const ManagerNoti = () => {
                                     <tr>
                                         <th>NotificationID</th>
                                         <th>Title</th>
-                                        <th>Contet</th>
+                                        <th>Content</th>
                                         <th scope={2}>Action</th>
                                     </tr>
                                 </thead>
@@ -79,19 +80,15 @@ const ManagerNoti = () => {
                                     {currentUser.map(n => (
                                         <tr key={n.id}>
                                             <td>{n.id}</td>
-                                            <td>{n.title}</td>
-                                            <td>{n.content}</td>
+                                            <td dangerouslySetInnerHTML={{ __html: n.title }}></td>
+                                            <td dangerouslySetInnerHTML={{ __html: n.content }}></td>
                                             <td>
-                                                {<>
+                                                <>
                                                     <Link to={'/edit/noti/'+n.id}>Edit</Link>
                                                     &nbsp;&nbsp;
-                                                   
                                                     <Link onClick={() => handleDelete(n.id)}>Delete</Link>
                                                 </>
-
-                                                }
                                             </td>
-
                                         </tr>
                                     ))}
                                 </tbody>
@@ -101,7 +98,6 @@ const ManagerNoti = () => {
                                 total={noti.length}
                                 pageSize={usersPerPage}
                                 onChange={paginate}
-
                                 style={{ marginTop: "16px", textAlign: "center" }}
                             />
                         </Col>

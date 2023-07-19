@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import TemplateUser from "../template/TemplateUser";
-import { Card,  } from "react-bootstrap";
+import { Card, } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import '../styles/noti.css';
-import {Modal} from "antd"
+import { Modal } from "antd"
 
 const ViewNoti = () => {
     const [noti, setNoti] = useState([]);
@@ -11,10 +11,15 @@ const ViewNoti = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     useEffect(() => {
         fetch("http://localhost:9999/notification")
-            .then((response) => response.json())
-            .then((data) => setNoti(data))
-            .catch((error) => console.log(error.message));
-    }, []);
+          .then((response) => response.json())
+          .then((data) => {
+            // Sắp xếp danh sách noti theo ID giảm dần
+            const sortedNoti = data.sort((a, b) => b.id - a.id);
+            setNoti(sortedNoti);
+          })
+          .catch((error) => console.log(error.message));
+      }, []);
+      
 
     const showModal = (id) => {
         setIsModalOpen(true);
@@ -53,7 +58,7 @@ const ViewNoti = () => {
                                             <div className="SN-date">Date: {n.Date}</div>
                                             <hr></hr>
                                             <Link onClick={() => showModal(n.id)}>
-                                                <div className="SN-news-title">Title: {n.title}</div>
+                                                Title : <p className="SN-news-title" dangerouslySetInnerHTML={{ __html: n.title }}></p>
                                             </Link>
                                         </Card>
                                     );
@@ -69,7 +74,7 @@ const ViewNoti = () => {
                                             <div className="SN-date">Date: {n.Date}</div>
                                             <hr></hr>
                                             <Link onClick={() => showModal(n.id)}>
-                                                <div className="SN-news-title">Title: {n.title}</div>
+                                                Title :   <div className="SN-news-title" dangerouslySetInnerHTML={{ __html: n.title }}></div>
                                             </Link>
                                         </Card>
                                     );
@@ -80,17 +85,30 @@ const ViewNoti = () => {
                     </div>
                 </div>
             </div>
-            <Modal
+            {/* <Modal
                 style={{ textAlign: "center" }}
                 open={isModalOpen}
                 onOk={handleOk}
                 onCancel={handleCancel}
             >
                 <h5 style={{ marginBottom: "30px" }}>View Newsotification</h5>
-                <p>Date : {viewNoti.Date}</p>
-                <p>Title: {viewNoti.title}</p>
-                <p>Content : {viewNoti.content} </p>
+                <p >Date : {viewNoti.Date}</p>
+                <p dangerouslySetInnerHTML={{ __html: viewNoti.title }}></p>
+                <p dangerouslySetInnerHTML={{ __html: viewNoti.content }}> </p>
+            </Modal> */}
+            <Modal
+                style={{ textAlign: "center" }}
+                open={isModalOpen}
+                onOk={handleOk}
+                onCancel={handleCancel}
+            >
+                <h5 style={{ marginBottom: "30px" }}>View Notification</h5>
+                <p>Date: {viewNoti.Date}   </p>
+                Title :<p dangerouslySetInnerHTML={{ __html: viewNoti.title }}></p>
+                Content :<p dangerouslySetInnerHTML={{ __html: viewNoti.content }}></p>
             </Modal>
+            
+
         </TemplateUser>
     );
 };

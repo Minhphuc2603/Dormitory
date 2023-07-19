@@ -1,124 +1,91 @@
 {
   "user": [
     {
-      "id": 1,
-      "name": "Van Tung",
-      "email": "tungne@gmail.com",
-      "phone": "0123482127",
-      "address": "HCM",
-      "gender": "male",
-      "StudentID": "HE163500",
-      "cost": 3500000
+      "id": 9,
+      "name": "Trinh Van Toan",
+      "email": "phuc@gmail.com",
+      "phone": "0987654321",
+      "address": "Ha Noi",
+      "gender": "female",
+      "StudentID": "He163510",
+      "cost": 2500000
     },
     {
-      "id": 2,
-      "StudentID": "HE163501",
-      "name": "trinh minh phuc",
-      "email": "trinhphuc@gmail.com",
-      "phone": "0946488236",
+      "name": "Tung Lam",
+      "email": "123@gmail.com",
+      "phone": "0946488299",
       "address": "Ha Noi",
+      "gender": "female",
+      "StudentID": "HE123456",
+      "cost": 3150000,
+      "id": 2
+    },
+    {
+      "id": 10,
+      "name": "Trịnh Minh Phúc",
+      "email": "trinhphuc980@gmail.com",
+      "phone": "0946488236",
+      "address": "Hà Nội",
       "gender": "male",
+      "StudentID": "He163506",
       "cost": 1000000000
     },
     {
-      "id": 3,
-      "StudentID": "HE163502",
-      "name": "Luu Van Tung",
-      "email": "tunghi@gmail.com",
-      "phone": "0974623723",
-      "address": "Ha Noi",
-      "gender": "male",
-      "cost": 2000000
-    },
-    {
-      "id": 4,
-      "name": "Nguyen Luong Duy",
-      "email": "phuctm@gmail.com",
-      "phone": "0946488234",
-      "address": "Ha Noi",
-      "gender": "female",
-      "StudentID": "HE163503",
-      "cost": 3250000
-    },
-    {
-      "id": 5,
-      "name": "Le Minh Cuong",
+      "name": "Lê Minh Cương",
       "email": "cuonglm@gmail.com",
-      "phone": "0983717221",
-      "address": "Nam Dinh",
-      "gender": "female",
-      "StudentID": "HE163504",
-      "cost": 300000
+      "phone": "0946488235",
+      "address": "Hà Nội",
+      "gender": "male",
+      "StudentID": "He163512",
+      "cost": 500000,
+      "id": 11
     },
     {
-      "id": 6,
-      "StudentID": "HE163505",
-      "name": "Nguyen Thanh Tu",
-      "email": "tune@gmail.com",
-      "phone": "01282712912",
-      "address": "Ha Noi",
+      "name": "Nguyễn Lương Duy",
+      "email": "duyne@gmail.com",
+      "phone": "0946488236",
+      "address": "Hà Nội",
       "gender": "male",
-      "cost": 2000000
-    },
-    {
-      "id": 7,
-      "name": "Trinh Minh Phuc",
-      "email": "phuctmhe163506@fpt.edu.vn",
-      "phone": "0946488234",
-      "address": "Ha Noi",
-      "gender": "male",
-      "StudentID": "HE163506",
-      "cost": 299150000
+      "StudentID": "HE161111",
+      "cost": 0,
+      "id": 12
     }
   ],
   "account": [
     {
-      "id": 1,
-      "username": "tungne",
-      "password": "123",
-      "status": true,
-      "role": "user"
+      "id": 9,
+      "username": "phuctm123",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+      "role": "student",
+      "status": true
     },
     {
       "id": 2,
+      "username": "phuctm4",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+      "role": "user",
+      "status": true
+    },
+    {
+      "id": 10,
       "username": "phuctm",
-      "password": "123",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "role": "admin",
       "status": true
     },
     {
-      "id": 3,
-      "username": "tunglv",
-      "password": "123",
-      "role": "user",
-      "status": true
-    },
-    {
-      "id": 4,
-      "username": "duynl",
-      "password": "123",
-      "role": "user",
-      "status": true
-    },
-    {
-      "id": 5,
       "username": "cuonglm",
-      "password": "123",
-      "role": "user",
-      "status": true
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+      "role": "student",
+      "status": true,
+      "id": 11
     },
     {
-      "id": 6,
-      "content": "123",
-      "title": "1234",
-      "date": ""
-    },
-    {
-      "id": 7,
-      "username": "phuctm1",
-      "password": "123",
-      "role": "user",
-      "status": true
+      "username": "duynl",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+      "role": "student",
+      "status": true,
+      "id": 12
     }
   ],
   "rooms": [
@@ -143,13 +110,13 @@
   ],
   "doms": [
     {
-      "id": 1,
-      "domID": "A",
       "domName": "DomA",
+      "domID": "A",
       "slot": "slot3",
       "totalBed": 132,
-      "usedBed": 12,
-      "freeBed": 120
+      "usedBed": 14,
+      "freeBed": 118,
+      "id": 1
     },
     {
       "id": 2,
@@ -184,139 +151,104 @@
       "id": 1,
       "title": "Thông báo cắt điện ",
       "content": "Dom sẽ mất điện vào ngày kia ",
-      "Date": "12-04-2023"
+      "Date": "12-4-2023"
     },
     {
       "id": 2,
       "title": "Thông báo cắt nước ",
       "content": "Thực hiện theo chỉ đạo của Nhà trường và kế hoạchvệsinhđịnh kỳbểchứanước hàng năm tại KTX, Phòng HCTH gửi thông báo đến các bạnSinhviên về lịch cắt nước vệ sinh, thau rửa bể chứa năm 2023 cụ thể như sau:Thời gian dự kiến:Từngày 06/7 đến hết ngày 07/7/2023",
-      "Date": "16-04-2023"
+      "Date": "16-4-2023"
     },
     {
       "id": 3,
       "title": "THÔNG BÁO V/V THAY ĐỔI THỜI GIAN ĐĂNG KÝ MỚI PHÒNG KTX ",
       "content": "KTX gia hạn lịch cho sinh viên giữ giường cũ đến trước 12h00 ngày 20/4/2023.Với các bạn diện đăng ký mới, chuyển phòng hệ thống OCD sẽ mở cổng đăng ký tiếp nhận đặt phòng từ sau 12h00 ngày 20/4/2023.Sau khi kết thúc thời hạn giữ chỗ , các bạn kiểm tra thông tin phòng trống để thực hiện đặt phòng phù hợp nhé!",
-      "Date": "12-07-2023"
+      "Date": "12-7-2023"
     },
     {
       "id": 4,
       "title": "Thông báo về kế hoạch tiếp nhận đăng ký KTX cơ sở Hòa Lạc từ kỳ Fall 2023",
       "content": "Thực hiện theo chỉ đạo của Nhà trường về kế hoạch tiếp nhận đăng ký KTX kỳ Fall 2023, Phòng Hành chính tổng hợp KTX xin thông tin tới bạn nội dung cụ thể như sau:I. Đối tượng ưu tiên đăng ký KTX- Sinh viên học tập tại cơ sở Hòa Lạc trong học kỳ 1- 5.- Các đối tượng sinh viên khuyết tật hay đặc biệt khác, tùy trường hợp cụ thể Nhà trường sẽ xem xét giải quyết đơn.",
-      "Date": "15-07-2023"
+      "Date": "15-7-2023"
+    },
+    {
+      "title": "<p>Buồn của Mp</p>",
+      "content": "<h4>quá khứ của kẻ phản diện</h4>",
+      "Date": "18-7-2023",
+      "id": 5
     }
   ],
   "residentHistory": [
     {
-      "StudentID": "HE163502",
-      "Information": "A - 4 beds",
-      "CheckIn": "12-04-2023",
-      "CheckOut": "23-07-2023",
-      "Price": 2300000,
-      "id": 9
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "B - 4 beds",
-      "CheckIn": "12-04-2023",
-      "CheckOut": "23-07-2023",
-      "Price": 2300000,
-      "id": 10
-    },
-    {
-      "StudentID": "HE163506",
-      "Information": "A - 3 beds",
-      "CheckIn": "12-04-2023",
-      "CheckOut": "12-07-2023",
-      "Price": 850000,
-      "id": 12
-    },
-    {
-      "StudentID": "HE163503",
-      "Information": "DomB-3 beds",
-      "CheckIn": "12-04-2023",
-      "CheckOut": "12-07-2023",
-      "Price": 850000,
-      "id": 13
-    },
-    {
-      "StudentID": "HE163500",
-      "Information": "A - 4 beds",
-      "CheckOut": "15-10-2023",
-      "Price": 850000,
-      "CheckIn": "15-7-2023",
-      "id": 17
-    },
-    {
-      "StudentID": "HE163503",
-      "Information": "A - 3 beds",
-      "CheckOut": "15-10-2023",
-      "Price": 1500000,
-      "CheckIn": "15-7-2023",
-      "id": 22
-    },
-    {
-      "StudentID": "HE163504",
-      "Information": "B - 4 beds",
-      "CheckOut": "15-10-2023",
-      "Price": 850000,
-      "CheckIn": "15-7-2023",
-      "id": 23
-    },
-    {
-      "StudentID": "HE163503",
-      "Information": "A - 4 beds",
-      "CheckOut": "16-10-2023",
-      "Price": 850000,
-      "CheckIn": "16-7-2023",
-      "id": 24
-    },
-    {
-      "StudentID": "HE163503",
-      "Information": "A - 3 beds",
-      "CheckOut": "16-10-2023",
-      "Price": 1500000,
-      "CheckIn": "16-7-2023",
-      "id": 25
-    },
-    {
-      "StudentID": "HE163503",
-      "Information": "A - 4 beds",
-      "CheckOut": "16-10-2023",
-      "Price": 850000,
-      "CheckIn": "16-7-2023",
-      "id": 26
-    },
-    {
-      "StudentID": "HE163503",
-      "Information": "A - 4 beds",
-      "CheckOut": "16-10-2023",
-      "Price": 850000,
-      "CheckIn": "16-7-2023",
-      "id": 27
-    },
-    {
-      "StudentID": "HE163506",
-      "Information": "B - 4 beds",
-      "CheckOut": "16-10-2023",
-      "Price": 850000,
-      "CheckIn": "16-7-2023",
-      "id": 28
-    },
-    {
-      "StudentID": "HE163503",
-      "Information": "A - 4 beds",
-      "CheckOut": "16-10-2023",
-      "Price": 850000,
-      "CheckIn": "16-7-2023",
-      "id": 29
-    },
-    {
-      "StudentID": "HE163503",
+      "StudentID": "HE123456",
       "Information": "A - 4 beds",
       "CheckOut": "17-10-2023",
       "Price": 850000,
       "CheckIn": "17-7-2023",
-      "id": 30
+      "id": 1
+    },
+    {
+      "StudentID": "HE123456",
+      "Information": "A - 3 beds",
+      "CheckOut": "17-10-2023",
+      "Price": 1500000,
+      "CheckIn": "17-7-2023",
+      "id": 2
+    },
+    {
+      "StudentID": "He163510",
+      "Information": "A - 3 beds",
+      "CheckOut": "18-10-2023",
+      "Price": 1500000,
+      "CheckIn": "18-7-2023",
+      "id": 3
+    }
+  ],
+  "payment": [
+    {
+      "userid": 2,
+      "name": "Tung Lam",
+      "pcost": 400000,
+      "isApproved": true,
+      "pdate": "19-7-2023",
+      "status": 1,
+      "id": 1
+    },
+    {
+      "userid": 2,
+      "name": "Tung Lam",
+      "status": 1,
+      "pcost": 100000,
+      "isApproved": true,
+      "pdate": "19-7-2023",
+      "id": 2
+    },
+    {
+      "userid": 2,
+      "name": "Tung Lam",
+      "status": 2,
+      "pcost": 700000,
+      "isApproved": true,
+      "pdate": "19-7-2023",
+      "id": 3
+    },
+    {
+      "userid": 11,
+      "name": "Lê Minh Cương",
+      "pcost": 1000000,
+      "isApproved": false,
+      "pdate": "19-7-2023",
+      "status": 0,
+      "id": 4
+    },
+    {
+      "userid": 11,
+      "name": "Lê Minh Cương",
+      "status": 1,
+      "pcost": 500000,
+      "isApproved": true,
+      "pdate": "19-7-2023",
+      "id": 5
     }
   ]
 }

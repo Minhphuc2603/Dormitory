@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { Col, Row, Table, } from 'react-bootstrap';
 import { Pagination, Modal } from "antd"
-import TemplateUser from "../template/TemplateUser";
+
 import TemplateAdmin from "../template/TemplateAdmin";
 
 const ManagerResident = () => {
@@ -77,7 +77,7 @@ const ManagerResident = () => {
             .then(resp => resp.json())
             .then(data => {
                 setResident(data);
-                console.log(data);
+                
             })
             .catch(err => {
                 console.log(err.message);

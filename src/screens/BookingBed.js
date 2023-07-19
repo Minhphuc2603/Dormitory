@@ -112,7 +112,7 @@ const BookingBed = () => {
             })
     }, []);
 
-    console.log("domidne", domID)
+    
     useEffect(() => {
         const filteredDoms = doms.filter((dom) => dom.slot === roomId);
         setCheck(filteredDoms);
@@ -157,7 +157,7 @@ const BookingBed = () => {
         freeBed: dom1.freeBed - 1,
         id: domID
     }
-    console.log("hihiupdate", updateDom)
+    
 
 
     const updateUser = {
@@ -169,7 +169,9 @@ const BookingBed = () => {
         address: user.address,
         gender: user.gender,
         StudentID: user.StudentID,
-        cost: (user.cost) - cost
+        cost: (user.cost) - cost,
+        // waitcost:user.waitcost,
+        // isApproved:user.isApproved
 
     };
     const updateAccount = {

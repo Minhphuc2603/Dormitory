@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 
 
 
+
 function HeaderApp() {
   const id = sessionStorage.getItem('id')
   const role = sessionStorage.getItem('userrole')
@@ -20,23 +21,29 @@ function HeaderApp() {
   const handleLogout = () => {
     setShowModal(false); // Ẩn modal khi logout
     sessionStorage.removeItem('id');
+    sessionStorage.removeItem('userrole');
     navigate('/');
     toast.success("Logout success");
   }
 
   const [users, setUsers] = useState([])
-
+  
+ 
   useEffect(() => {
+    if(id!==null){
     fetch('http://localhost:9999/user/' + id)
       .then(resp => resp.json())
       .then(data => {
         setUsers(data);
       })
       .catch(err => {
-        console.log(err.message);
+        
       })
+    }
   }, []);
 
+ 
+  
 
   return (
     <div className="header">

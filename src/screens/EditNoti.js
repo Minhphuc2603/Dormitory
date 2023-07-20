@@ -27,11 +27,11 @@ const EditNoti = () => {
     const isValidate = () => {
         let isProceed = true;
 
-        if (!title || !title.trim()) {
+        if (!title.trim()) {
             isProceed = false;
             toast.warning('Please enter a value in the title field');
         }
-        if (!content || !content.trim()) {
+        if (!content.trim()) {
             isProceed = false;
             toast.warning('Please enter a value in the content field');
         }

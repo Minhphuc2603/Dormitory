@@ -88,7 +88,7 @@ const ManagerUser = () => {
                                                 {account.map(d =>
                                                     d.id === u.id ? (
                                                         d.status ? (
-                                                            <span style={{ color: "green" }}>active</span>
+                                                            <span key={d.id} style={{ color: "green" }}>active</span>
                                                         ) : (
                                                             <span style={{ color: "red" }}>inactive</span>
                                                         )

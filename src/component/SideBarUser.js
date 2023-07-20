@@ -27,8 +27,8 @@ function SideBarUser() {
     };
 
     return (
-        <div>
-            <body id="page-top">
+        
+            <>
 
                 {/*  <!-- Page Wrapper --> */}
                 <div id="wrapper">
@@ -131,12 +131,19 @@ function SideBarUser() {
                                 <span>Payment </span>
                                 </Link>
                         </li>
+                        <hr className="sidebar-divider d-none d-md-block" />
+                        <li className="nav-item active">
+                            <Link className="nav-link" to={'/paymenthistory'} >
+                            
+                                <span> History Payment </span>
+                                </Link>
+                        </li>
                     </ul>
                     
                     
                 </div>
-            </body>
-        </div>
+           </>
+        
     )
 }
 

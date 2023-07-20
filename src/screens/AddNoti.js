@@ -16,11 +16,11 @@ const AddNoti = () => {
         
         if (title === null || title.trim() === "") {
           isproceed = false;
-          toast.warning('Please enter the value in name Room');
+          toast.warning('Please enter the value in Titlr');
         }
         if (content === null || content.trim() === "") {
             isproceed = false;
-            toast.warning('Please enter the value in number Bed');
+            toast.warning('Please enter the value in Content');
           }
      
         return isproceed;

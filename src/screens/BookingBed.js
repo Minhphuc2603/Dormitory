@@ -7,10 +7,6 @@ import { toast } from "react-toastify";
 
 const BookingBed = () => {
     const id = sessionStorage.getItem('id')
-    console.log(id)
-    
-
-
     const [page, setPage] = useState(true)
     const [room, setRoom] = useState([])
 
@@ -31,7 +27,6 @@ const BookingBed = () => {
         if (cost) {
             setPage(false)
         }
-
     }
     useEffect(() => {
       const role = sessionStorage.getItem('userrole');
@@ -111,7 +106,6 @@ const BookingBed = () => {
                 console.log(err.message);
             })
     }, []);
-
     
     useEffect(() => {
         const filteredDoms = doms.filter((dom) => dom.slot === roomId);
@@ -169,9 +163,7 @@ const BookingBed = () => {
         address: user.address,
         gender: user.gender,
         StudentID: user.StudentID,
-        cost: (user.cost) - cost,
-        // waitcost:user.waitcost,
-        // isApproved:user.isApproved
+        cost: (user.cost) - cost
 
     };
     const updateAccount = {
@@ -248,14 +240,6 @@ const BookingBed = () => {
         toast.success('Success');
         navigate("/resident")
     }
-
-
-
-
-
-
-
-
     return (
         <TemplateUser>
             {page ?
@@ -284,8 +268,6 @@ const BookingBed = () => {
                             onClick={next}>Next</button>
                     </form>
                 </div>
-
-
                 :
                 <div className="">
                     <h1>Detail Booking</h1>
@@ -326,12 +308,6 @@ const BookingBed = () => {
                                             <option value={c.id} >{c.domID}</option>
                                         ))}
                                     </select>
-
-
-                                   
-
-
-
                                 </div>
                             </form>
                         </div>

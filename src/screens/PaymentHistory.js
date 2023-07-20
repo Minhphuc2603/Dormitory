@@ -13,7 +13,8 @@ const PaymentHistory = () => {
         fetch('http://localhost:9999/payment/')
             .then(resp => resp.json())
             .then(data => {
-                const filteredPayment = data.filter(p => p.userid === id);
+                const filteredPayment = data.filter(p => p.userid === id) 
+                
                 setPayment(filteredPayment)
                 
             })

@@ -31,24 +31,24 @@
       "cost": 1000000000
     },
     {
+      "id": 11,
       "name": "Lê Minh Cương",
       "email": "cuonglm@gmail.com",
       "phone": "0946488235",
       "address": "Hà Nội",
       "gender": "male",
       "StudentID": "He163512",
-      "cost": 500000,
-      "id": 11
+      "cost": 0
     },
     {
+      "id": 12,
       "name": "Nguyễn Lương Duy",
       "email": "duyne@gmail.com",
       "phone": "0946488236",
       "address": "Hà Nội",
       "gender": "male",
       "StudentID": "HE161111",
-      "cost": 0,
-      "id": 12
+      "cost": 300000
     }
   ],
   "account": [
@@ -74,36 +74,32 @@
       "status": true
     },
     {
+      "id": 11,
       "username": "cuonglm",
       "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
       "role": "student",
-      "status": true,
-      "id": 11
+      "status": true
     },
     {
+      "id": 12,
       "username": "duynl",
       "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-      "role": "student",
-      "status": true,
-      "id": 12
+      "role": "user",
+      "status": true
     }
   ],
   "rooms": [
     {
       "id": "1",
       "room_id": "slot4",
-      "floor": {
-        "$numberLong": "2"
-      },
+      
       "type_room": "4 beds",
       "cost": 850000
     },
     {
       "id": "2",
       "room_id": "slot3",
-      "floor": {
-        "$numberLong": "2"
-      },
+      
       "type_room": "3 beds",
       "cost": 1500000
     }
@@ -119,13 +115,13 @@
       "id": 1
     },
     {
-      "id": 2,
-      "domID": "B",
       "domName": "DomB",
+      "domID": "B",
       "slot": "slot3",
       "totalBed": 100,
-      "usedBed": 50,
-      "freeBed": 50
+      "usedBed": 52,
+      "freeBed": 48,
+      "id": 2
     },
     {
       "domName": "DomA",
@@ -202,6 +198,46 @@
       "Price": 1500000,
       "CheckIn": "18-7-2023",
       "id": 3
+    },
+    {
+      "StudentID": "HE161111",
+      "Information": "B - 3 beds",
+      "CheckOut": "20-10-2023",
+      "Price": 1500000,
+      "CheckIn": "20-7-2023",
+      "id": 4
+    },
+    {
+      "StudentID": "HE161111",
+      "Information": "A - 4 beds",
+      "CheckOut": "20-10-2023",
+      "Price": 850000,
+      "CheckIn": "20-7-2023",
+      "id": 5
+    },
+    {
+      "StudentID": "HE161111",
+      "Information": "A - 4 beds",
+      "CheckOut": "20-10-2023",
+      "Price": 850000,
+      "CheckIn": "20-7-2023",
+      "id": 6
+    },
+    {
+      "StudentID": "HE161111",
+      "Information": "B - 3 beds",
+      "CheckOut": "20-10-2023",
+      "Price": 1500000,
+      "CheckIn": "20-7-2023",
+      "id": 7
+    },
+    {
+      "StudentID": "He163512",
+      "Information": "A - 3 beds",
+      "CheckOut": "20-10-2023",
+      "Price": 1500000,
+      "CheckIn": "20-7-2023",
+      "id": 8
     }
   ],
   "payment": [
@@ -235,10 +271,10 @@
     {
       "userid": 11,
       "name": "Lê Minh Cương",
+      "status": 2,
       "pcost": 1000000,
-      "isApproved": false,
+      "isApproved": true,
       "pdate": "19-7-2023",
-      "status": 0,
       "id": 4
     },
     {
@@ -249,6 +285,24 @@
       "isApproved": true,
       "pdate": "19-7-2023",
       "id": 5
+    },
+    {
+      "userid": 11,
+      "name": "Lê Minh Cương",
+      "status": 2,
+      "pcost": 500000,
+      "isApproved": true,
+      "pdate": "20-7-2023",
+      "id": 6
+    },
+    {
+      "userid": 11,
+      "name": "Lê Minh Cương",
+      "status": 1,
+      "pcost": 1000000,
+      "isApproved": true,
+      "pdate": "20-7-2023",
+      "id": 7
     }
   ]
 }

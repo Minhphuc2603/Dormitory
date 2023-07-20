@@ -47,7 +47,7 @@ const Payment = () => {
                     .then((res) => {
                         if (res.ok) {
                             toast.success('Notification updated successfully');
-                            navigate(`/user/${id}`);
+                            navigate(`/paymenthistory`);
                         } else {
                             throw new Error('Failed to update notification');
                         }

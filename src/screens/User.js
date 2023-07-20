@@ -57,7 +57,7 @@ export default function ProfileUser() {
                                     <div className="card-body">
                                         <div className="d-flex flex-column align-items-center text-center">
                                             <img
-                                                src="https://www.facebook.com/photo/?fbid=531977505201756&set=pob.100051685322616"
+                                                src=""
                                                 alt="Load"
                                                 className="rounded-circle"
                                                 width={150}

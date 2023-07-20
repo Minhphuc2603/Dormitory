@@ -28,9 +28,9 @@ function SideBarAdmin() {
     };
 
     return (
-        <div>
-            <body id="page-top">
-
+        
+            
+            <>
                 {/*  <!-- Page Wrapper --> */}
                 <div id="wrapper">
 
@@ -131,12 +131,19 @@ function SideBarAdmin() {
                                 <span>Manager Resident</span>
                                 </Link>
                         </li>
+                        <hr className="sidebar-divider d-none d-md-block" />
+                        <li className="nav-item active">
+                            <Link className="nav-link" to={'/managerpayment'} >
+                            
+                                <span>Manager Payment</span>
+                                </Link>
+                        </li>
                     </ul>
                     
                     
                 </div>
-            </body>
-        </div>
+           </>
+        
     )
 }
 

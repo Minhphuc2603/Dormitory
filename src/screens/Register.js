@@ -6,17 +6,18 @@ import { SHA256 } from "crypto-js";
 
 
 const Register = () => {
-  const [nextUserId, setNextUserId] = useState(0);
+
 
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState("female");
   const [StudentID, setStudentID] = useState("");
-  const [account,setAccount]= useState("")
+  const [account, setAccount] = useState("")
 
 
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Register = () => {
       .then(resp => resp.json())
       .then(data => {
         setUsers(data);
-        setNextUserId(data.length + 1);
+
       })
       .catch(err => {
         console.log(err.message);
@@ -37,7 +38,7 @@ const Register = () => {
       .then(resp => resp.json())
       .then(data => {
         setAccount(data);
-        
+
       })
       .catch(err => {
         console.log(err.message);
@@ -46,60 +47,80 @@ const Register = () => {
 
   const IsValidate = () => {
     let isproceed = true;
-    let errormessage = "Please enter the value in ";
-  
-    if (username === null || username === "") {
-      isproceed = false;
-      errormessage += "Username";
-    }
-    if (name === null || name === "") {
-      isproceed = false;
-      errormessage += "Fullname";
-    }
-    if (password === null || password === "") {
-      isproceed = false;
-      errormessage += "Password";
-    }
-    if (email === null || email === "") {
-      isproceed = false;
-      errormessage += "Email";
-    }
-  
-    if (!isproceed) {
-      toast.warning(errormessage);
-    } else {
-      if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
-        isproceed = false;
-        toast.warning("Please enter a valid email");
-      } else {
-        const existingUser = account.find(
-          (account) => account.username === username
-        );
-        const existingAccount = users.find(
-          (users) => users.email === email
-        );
 
-
-        if (existingUser && existingAccount) {
-          isproceed = false;
-          toast.warning("Username or email already exists");
-        }
-      }
+    if (username === null || username.trim() === "") {
+      isproceed = false;
+      toast.warning('Please enter the value in Username');
     }
-  
+    if (name === null || name.trim() === "") {
+      isproceed = false;
+      toast.warning('Please enter the value in name');
+    }
+    if (phone === null || phone.trim() === "") {
+      isproceed = false;
+      toast.warning('Please enter the value in phone');
+    }
+    if (address === null || address.trim() === "") {
+      isproceed = false;
+      toast.warning('Please enter the value in address');
+    }
+    if (email === null || email.trim() === "") {
+      isproceed = false;
+      toast.warning('Please enter the value in email');
+    }
+    if (StudentID === null || StudentID.trim() === "") {
+      isproceed = false;
+      toast.warning('Please enter the value in studentID');
+    }
+    if (password === null || password.trim() === "") {
+      isproceed = false;
+      toast.warning('Please enter the value in address');
+    }
+    if (password !== confirmPassword) {
+      isproceed = false;
+      toast.warning('Passwords do not match');
+    }
+    if (!/^0\d{9}$/.test(phone)) {
+      isproceed = false;
+      toast.warning('Phone numbers need 10 digits and start with the digit 0');
+    }
+    const isExistingAccount = account.find((acc) => acc.username === username);
+   if (isExistingAccount) {
+    isproceed = false;
+    toast.warning('Username already exists');
+  }
+  const isEmail = users.find((u) => u.email === email);
+   if (isEmail) {
+    isproceed = false;
+    toast.warning('Email already exists');
+  }
+  const isID = users.find((u) => u.StudentID === StudentID);
+   if (isID) {
+    isproceed = false;
+    toast.warning('StudentID already exists');
+  }
+  const isPhone = users.find((u) => u.phone === phone);
+   if (isPhone) {
+    isproceed = false;
+    toast.warning('Phone already exists');
+  }
+
     return isproceed;
-  };
-  
-  
+  }
+
+
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const hashedPassword = SHA256(password).toString();
-     
-    
+
+
 
     // Tạo đối tượng người dùng mới
     const userObj = {
-     
+
       name,
       email,
       phone,
@@ -113,7 +134,7 @@ const Register = () => {
     // Tạo đối tượng tài khoản mới
     const accountObj = {
 
-      
+
       username,
       password: hashedPassword,
       role: "student",
@@ -163,7 +184,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="offset-lg-3 col-lg-6" style={{ marginTop: "200px" }}>
+      <div className="offset-lg-3 col-lg-6" >
         <form className="container" onSubmit={handleSubmit}>
           <div className="card">
             <div className="card-header">
@@ -196,6 +217,15 @@ const Register = () => {
                   className="form-control"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
               <div className="form-group">

@@ -1,18 +1,35 @@
 import { Button, Col, Row, Table, } from 'react-bootstrap';
 import TemplateAdmin from '../template/TemplateAdmin';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Pagination } from 'antd';
 const ManagerPayment = () => {
     const [payment, setPayment] = useState([])
     const [user, setUser] = useState([])
+    const [currentPage, setCurrentPage] = useState(1);
+    const [usersPerPage] = useState(5);
+
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentPayment = payment.slice(indexOfFirstUser, indexOfLastUser);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const navigate = useNavigate()
+    useEffect(() => {
+        const role = sessionStorage.getItem('userrole');
+        const id = sessionStorage.getItem('id');
+        if (role !== "admin" || id === null) {
+          navigate("/error");
+        }
+      }, []);
 
     useEffect(() => {
         fetch('http://localhost:9999/payment/')
             .then(resp => resp.json())
             .then(data => {
-                setPayment(data);
-                console.log(data)
+                 const PaymentSort = data.sort((a, b) => b.id - a.id);
+                setPayment(PaymentSort);
+                
             })
             .catch(err => {
                 console.log(err.message);
@@ -152,7 +169,7 @@ const ManagerPayment = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        payment.map(p => (
+                                        currentPayment.map(p => (
                                             <tr key={p.id}>
                                                 <td>{p.name}</td>
                                                 <td>{p.pdate}</td>
@@ -180,6 +197,14 @@ const ManagerPayment = () => {
 
                                 </tbody>
                             </Table>
+                            <Pagination
+                                current={currentPage}
+                                total={payment.length}
+                                pageSize={usersPerPage}
+                                onChange={paginate}
+
+                                style={{ marginTop: "16px", textAlign: "center" }}
+                            />
 
                         </Col>
                     </Row>

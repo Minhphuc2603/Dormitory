@@ -22,6 +22,7 @@ function HeaderApp() {
     setShowModal(false); // Ẩn modal khi logout
     sessionStorage.removeItem('id');
     sessionStorage.removeItem('userrole');
+    sessionStorage.removeItem('DomID');
     navigate('/');
     toast.success("Logout success");
   }

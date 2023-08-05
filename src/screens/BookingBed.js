@@ -45,7 +45,7 @@ const BookingBed = () => {
             .then(resp => resp.json())
             .then(data => {
                 setAccount(data);
-                console.log(data)
+              
             })
             .catch(err => {
                 console.log(err.message);
@@ -69,19 +69,22 @@ const BookingBed = () => {
             .then(resp => resp.json())
             .then(data => {
                 setRoom(data);
-                console.log(data)
+               
 
             })
             .catch(err => {
                 console.log(err.message);
             })
     }, []);
+    
     function updateCost(event) {
 
         //tra ve 1 index o select
-        const selectedIndex = event.target.selectedIndex - 1;
+        const selectedIndex = event.target.selectedIndex -1;
         //tra ve 1 mang dc chon
+        
         const selectedOption = room[selectedIndex];
+        
 
         const selectedCost = selectedOption.cost;
         const selectedTypeRoom = selectedOption.type_room;
@@ -131,7 +134,7 @@ const BookingBed = () => {
             .then(resp => resp.json())
             .then(data => {
                 setDom1(data);
-                console.log("hihi", data)
+                
 
             })
             .catch(err => {
@@ -169,8 +172,7 @@ const BookingBed = () => {
     const updateAccount = {
         id: account.id,
         username:account.username,
-        password:account.password,
-        
+        password:account.password,       
         role:"user",
         status:account.status
     };
@@ -179,7 +181,7 @@ const BookingBed = () => {
     const month = currentDate.getMonth() + 1;
     const monthCheckout = month + 3; // Lưu ý: Tháng bắt đầu từ 0 (tháng 0 là tháng 1)
     const year = currentDate.getFullYear();
-    console.log(currentDate)
+    
     const postResident = {
         StudentID: user.StudentID,
         Information: `${dom1.domID} - ${typeRoom}`,
@@ -187,10 +189,7 @@ const BookingBed = () => {
         Price: cost,
         CheckIn: `${day}-${month}-${year}`
     }
-    console.log("update", postResident)
-    console.log("hi", typeRoom)
-    console.log("hi1", dom1.domID)
-    console.log("hi2", updateAccount)
+   
     
     const booking = () => {
         fetch(`http://localhost:9999/account/${id}`, {

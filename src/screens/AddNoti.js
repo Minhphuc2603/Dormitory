@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import TemplateAdmin from "../template/TemplateAdmin";
 
 const AddNoti = () => {
     const { id } = useParams();
@@ -58,6 +59,9 @@ const AddNoti = () => {
     const navigate = useNavigate();
 
     return (
+        <TemplateAdmin>
+
+        
         <Col
             className="offset-md-2 col-md-8"
             style={{ border: "1px solid red", marginTop: "100px", padding: "30px" }}
@@ -131,6 +135,7 @@ const AddNoti = () => {
                 </Col>
             </Row>
         </Col>
+        </TemplateAdmin>
     );
 };
 

@@ -8,7 +8,7 @@ export default function Home() {
 
     return (
         <TemplateHome>
-            
+
 
             <div className="container mp">
 
@@ -44,31 +44,32 @@ export default function Home() {
                             />
                         </div>
                     </div>
-                    <div className="row layout">
-                        <div className="col-8">
+
+                    <div className=" row layout ">
+                        <div className="img col-6">
+
                             <img
-                                className="landing-info-img-2"
-                                src="https://ocd.fpt.edu.vn/Content/images/landing/content2.png"
-                                alt="img-2"
+                                 className="layout-img1"
+                                 src="https://ocd.fpt.edu.vn/Content/images/landing/content1.png"
+                                 alt="img-1"
                             />
                         </div>
-                        <div className="col-4">
-                            <div className="content">
-                                <p style={{ fontWeight: "bold", color: "#F36F21" }}>
-                                    Ký túc xá của trường Đại học FPT là chỗ ở dành riêng cho sinh viên
-                                    của Đại học FPT.
-                                </p>
-                                <p>
-                                    Hiện nay, một vấn đề các bạn tân sinh viên sau khi biết kết quả trúng
-                                    tuyển Đại học. Đó là tìm kiếm cho mình một chỗ ở phù hợp, vừa tiết kiệm
-                                    vừa đảm bảo an ninh, môi trường học tập. Không chỉ các tân sinh viên mà
-                                    các bạn sinh viên các khóa trước hầu hết cũng đều mong muốn ở tại{" "}
-                                    <b style={{ color: "#F36F21" }}>KTX</b> trường để thuận lợi cho việc di
-                                    chuyển. Và để tiết kiệm chi phí, có một trường trường để học tập và sinh
-                                    hoạt.
-                                </p>
-                            </div>
+                        <div className="text1 col-6">
+                            <p style={{ fontWeight: "bold", color: "#F36F21" }}>
+                                Ký túc xá của trường Đại học FPT là chỗ ở dành riêng cho sinh viên
+                                của Đại học FPT.
+                            </p>
+                            <p>
+                                Hiện nay, một vấn đề các bạn tân sinh viên sau khi biết kết quả trúng
+                                tuyển Đại học. Đó là tìm kiếm cho mình một chỗ ở phù hợp, vừa tiết kiệm
+                                vừa đảm bảo an ninh, môi trường học tập. Không chỉ các tân sinh viên mà
+                                các bạn sinh viên các khóa trước hầu hết cũng đều mong muốn ở tại{" "}
+                                <b style={{ color: "#F36F21" }}>KTX</b> trường để thuận lợi cho việc di
+                                chuyển. Và để tiết kiệm chi phí, có một trường trường để học tập và sinh
+                                hoạt.
+                            </p>
                         </div>
+
                     </div>
 
                     <div>

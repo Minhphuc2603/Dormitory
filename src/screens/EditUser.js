@@ -139,6 +139,7 @@ const EditUser = () => {
                                                     name="email"
                                                     value={user.email}
                                                     onChange={handleInputChange}
+                                                    disabled
                                                 />
                                             </div>
                                         </div>
@@ -153,6 +154,7 @@ const EditUser = () => {
                                                     name="phone"
                                                     value={user.phone}
                                                     onChange={handleInputChange}
+                                                    disabled
                                                 />
                                             </div>
                                         </div>

@@ -35,7 +35,7 @@ function SideBarAdmin() {
                 <div id="wrapper">
 
                     {/*  <!-- Sidebar --> */}
-                    <ul className={style} id="accordionSidebar">
+                    <ul className={style} id="accordionSidebar" style={{width:'95%'}}>
 
                         {/*  <!-- Sidebar - Brand --> */}
                         <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">

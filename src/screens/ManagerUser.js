@@ -23,7 +23,7 @@ const ManagerUser = () => {
             .then(resp => resp.json())
             .then(data => {
                 setUsers(data);
-                console.log(data)
+                
             })
             .catch(err => {
                 console.log(err.message);
@@ -40,7 +40,7 @@ const ManagerUser = () => {
     
     
       
-    const totalPages = Math.ceil(users.length / usersPerPage);
+    
 
     // Lấy index bắt đầu và kết thúc của list user hiện tại
     const indexOfLastUser = currentPage * usersPerPage;

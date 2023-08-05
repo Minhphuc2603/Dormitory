@@ -9,7 +9,7 @@ import TemplateAdmin from "../template/TemplateAdmin";
 const ManagerResident = () => {
 
     const id = sessionStorage.getItem("id")
-    console.log(id)
+    
 
     const [resident, setResident] = useState([])
     const [viewResident, setViewResident] = useState([])

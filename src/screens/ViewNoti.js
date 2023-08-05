@@ -85,17 +85,7 @@ const ViewNoti = () => {
                     </div>
                 </div>
             </div>
-            {/* <Modal
-                style={{ textAlign: "center" }}
-                open={isModalOpen}
-                onOk={handleOk}
-                onCancel={handleCancel}
-            >
-                <h5 style={{ marginBottom: "30px" }}>View Newsotification</h5>
-                <p >Date : {viewNoti.Date}</p>
-                <p dangerouslySetInnerHTML={{ __html: viewNoti.title }}></p>
-                <p dangerouslySetInnerHTML={{ __html: viewNoti.content }}> </p>
-            </Modal> */}
+            
             <Modal
                 style={{ textAlign: "center" }}
                 open={isModalOpen}

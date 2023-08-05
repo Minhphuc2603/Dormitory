@@ -38,7 +38,7 @@
       "address": "Hà Nội",
       "gender": "male",
       "StudentID": "He163512",
-      "cost": 0
+      "cost": 9150000
     },
     {
       "id": 12,
@@ -77,14 +77,14 @@
       "id": 11,
       "username": "cuonglm",
       "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-      "role": "student",
+      "role": "user",
       "status": true
     },
     {
       "id": 12,
       "username": "duynl",
       "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-      "role": "user",
+      "role": "student",
       "status": true
     }
   ],
@@ -92,14 +92,12 @@
     {
       "id": "1",
       "room_id": "slot4",
-      
       "type_room": "4 beds",
       "cost": 850000
     },
     {
       "id": "2",
       "room_id": "slot3",
-      
       "type_room": "3 beds",
       "cost": 1500000
     }
@@ -129,7 +127,7 @@
       "slot": "slot4",
       "totalBed": 50,
       "usedBed": 39,
-      "freeBed": 11,
+      "freeBed": 1,
       "id": 3
     },
     {
@@ -145,9 +143,9 @@
   "notification": [
     {
       "id": 1,
-      "title": "Thông báo cắt điện ",
       "content": "Dom sẽ mất điện vào ngày kia ",
-      "Date": "12-4-2023"
+      "title": "Thông báo cắt điện ",
+      "Date": ""
     },
     {
       "id": 2,
@@ -166,12 +164,6 @@
       "title": "Thông báo về kế hoạch tiếp nhận đăng ký KTX cơ sở Hòa Lạc từ kỳ Fall 2023",
       "content": "Thực hiện theo chỉ đạo của Nhà trường về kế hoạch tiếp nhận đăng ký KTX kỳ Fall 2023, Phòng Hành chính tổng hợp KTX xin thông tin tới bạn nội dung cụ thể như sau:I. Đối tượng ưu tiên đăng ký KTX- Sinh viên học tập tại cơ sở Hòa Lạc trong học kỳ 1- 5.- Các đối tượng sinh viên khuyết tật hay đặc biệt khác, tùy trường hợp cụ thể Nhà trường sẽ xem xét giải quyết đơn.",
       "Date": "15-7-2023"
-    },
-    {
-      "title": "<p>Buồn của Mp</p>",
-      "content": "<h4>quá khứ của kẻ phản diện</h4>",
-      "Date": "18-7-2023",
-      "id": 5
     }
   ],
   "residentHistory": [
@@ -238,6 +230,14 @@
       "Price": 1500000,
       "CheckIn": "20-7-2023",
       "id": 8
+    },
+    {
+      "StudentID": "He163512",
+      "Information": "A - 4 beds",
+      "CheckOut": "20-10-2023",
+      "Price": 850000,
+      "CheckIn": "20-7-2023",
+      "id": 9
     }
   ],
   "payment": [
@@ -303,6 +303,15 @@
       "isApproved": true,
       "pdate": "20-7-2023",
       "id": 7
+    },
+    {
+      "userid": 11,
+      "name": "Lê Minh Cương",
+      "status": 1,
+      "pcost": 10000000,
+      "isApproved": true,
+      "pdate": "20-7-2023",
+      "id": 8
     }
   ]
 }

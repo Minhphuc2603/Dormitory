@@ -2,6 +2,8 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const EditNoti = () => {
     const { id } = useParams();
@@ -83,13 +85,35 @@ const EditNoti = () => {
                             <Row>
                                 <Form.Group className="col-md-12">
                                     <Form.Label>Title <span style={{ color: 'red' }}>*</span></Form.Label>
-                                    <Form.Control value={title} onChange={(e) => setTitle(e.target.value)} as="textarea" />
+                                    
+                                    <CKEditor
+                                    editor={ClassicEditor}
+                                    data={title}
+                                    onChange={(e, editor) => {
+                                        const data = editor.getData();
+                                        setTitle(data);
+                                       
+                                    }}
+                                />
                                 </Form.Group>
                             </Row>
                             <Row>
                                 <Form.Group className="col-md-12">
                                     <Form.Label>Content <span style={{ color: 'red' }}>*</span></Form.Label>
-                                    <Form.Control value={content} onChange={(e) => setContent(e.target.value)} as="textarea" />
+                                    
+                                    <CKEditor
+                                    
+                                    editor={ClassicEditor}
+                                    data={content}
+                                    onReady={(editor)=>{
+                                        editor.editing.view.change((write)=>{
+                                            write.setStyle(
+                                                "height",
+                                                "200px",
+                                                editor.editing.view.document.getRoot()
+                                            )
+                                        })
+                                    }}/>
                                 </Form.Group>
                             </Row>
                             <Row>

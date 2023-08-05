@@ -34,7 +34,7 @@ const ManagerRoom = () => {
             .then(resp => resp.json())
             .then(data => {
                 setBed(data);
-                console.log(data)
+               
             })
             .catch(err => {
                 console.log(err.message);
